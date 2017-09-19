@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/colorwhite">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="0dp"
+        android:addStatesFromChildren="false"
+        android:fillViewport="false"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/relative2"
+                android:background="@color/backgroundcolor">
+            <ImageView
+                android:layout_width="match_parent"
+                app:srcCompat="@mipmap/intro_assets"
+                android:id="@+id/imageView6"
+                android:layout_marginTop="10dp"
+                android:layout_height="420dp" />
+            </RelativeLayout>
+            <TextView
+                android:text="Heading 2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"
+                android:textColor="@color/colorblack"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/font1"
+                android:layout_marginTop="0dp" />
+
+            <TextView
+                android:text="Every action, every activity is surrounded by defects as a fire is surrounded by smoke."
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
+                android:id="@+id/textView16"
+                android:textSize="@dimen/font2" />
+
+            <TextView
+                android:text="Skip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView24"
+                android:textSize="@dimen/font3"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="25dp"
+                android:layout_marginTop="55dp" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

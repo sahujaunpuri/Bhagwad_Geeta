@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <View
+        android:layout_height="1dp"
+        android:background="@color/colorMaroon"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="350dp" />
+
+    <View
+        android:layout_height="150dp"
+        android:background="@color/colorMaroon"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="1dp" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView47"
+        android:textColor="@color/colorMaroon"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView48"
+        android:textSize="16sp"
+        android:layout_marginTop="22dp"
+        android:layout_marginLeft="100dp"
+        android:textColor="@color/colorMaroon" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/switch3"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="300dp" />
+
+    <Spinner
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner5"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp" />
+
+    <View
+        android:layout_height="1dp"
+        android:background="@color/colorMaroon"
+        android:layout_marginTop="160dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="350dp" />
+
+    <View
+        android:layout_height="150dp"
+        android:background="@color/colorMaroon"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="360dp"
+        android:layout_width="1dp" />
+
+</FrameLayout>

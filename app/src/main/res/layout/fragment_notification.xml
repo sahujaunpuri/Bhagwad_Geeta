@@ -1,0 +1,90 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorwhite"
+    tools:context="com.application.aayush.geeta.SettingsFragment">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/backgroundcolor1"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/toobar_title"
+            android:text="Notification"
+            android:textColor="@color/colorwhite"
+            android:textSize="22sp"
+            android:gravity="fill_horizontal|center" />
+    </android.support.v7.widget.Toolbar>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorwhite"
+        android:paddingLeft="0dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginLeft="10dp">
+        <View
+             android:layout_height="1dp"
+                 android:background="@color/colorgrey"
+                 android:layout_marginTop="10dp"
+                 android:layout_marginLeft="10dp"
+             android:layout_width="100dp" />
+             <View
+                 android:layout_width="1dp"
+                 android:layout_height="80dp"
+                 android:background="@color/colorgrey"
+                 android:layout_marginTop="10dp"
+                 android:layout_marginLeft="10dp"/>
+        <View
+            android:layout_height="1dp"
+            android:background="@color/colorgrey"
+            android:layout_marginTop="90dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="100dp" />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="80dp"
+            android:background="@color/colorgrey"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="110dp"/>
+
+        <TextView
+            android:text="Time to read geeta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView34"
+            android:textColor="@color/textcolor1"
+            android:textSize="22sp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:text="Chapter 2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView35"
+            android:textSize="18sp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="50dp" />
+
+    </FrameLayout>
+
+    <Button
+        android:text="Ok"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp"
+        android:id="@+id/button11"
+        android:background="@color/backgroundcolor1"
+        android:textColor="@color/colorwhite"
+        android:layout_width="300dp" />
+
+
+</RelativeLayout>

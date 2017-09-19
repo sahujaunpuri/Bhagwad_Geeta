@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\ic_launcher.png",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\contacts.png",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-hdpi\\contacts.png"
+    },
+    {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\ic_launcher1.png",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher1.png"
+    }
+]

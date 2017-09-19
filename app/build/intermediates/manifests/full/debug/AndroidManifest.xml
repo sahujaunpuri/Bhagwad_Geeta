@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.application.aayush.geeta"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="24" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher1"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity android:name="com.application.aayush.geeta.MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.application.aayush.geeta.FirstScreen" />
+        <activity android:name="com.application.aayush.geeta.SecondScreen" />
+        <activity android:name="com.application.aayush.geeta.ThirdScreen" />
+        <activity android:name="com.application.aayush.geeta.SignUp" />
+        <activity android:name="com.application.aayush.geeta.MyProfile" />
+        <activity android:name="com.application.aayush.geeta.MyRating" />
+        <activity android:name="com.application.aayush.geeta.SetReminder" />
+        <activity android:name="com.application.aayush.geeta.Ringtone" />
+        <activity
+            android:name="com.application.aayush.geeta.UserMenu"
+            android:label="@string/title_activity_user_menu"
+            android:theme="@style/AppTheme" />
+    </application>
+
+</manifest>

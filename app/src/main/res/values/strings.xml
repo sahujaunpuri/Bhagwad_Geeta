@@ -1,0 +1,77 @@
+<resources>
+    <string name="app_name">Geeta</string>
+    <string name="first_textview">Every Day</string>
+    <string name="second_textview">Geeta</string>
+    <string name="name">Name</string>
+    <string name="mobile">Mobile Number</string>
+    <string name="email">Email Id</string>
+    <string name="address">Address</string>
+    <string name="city">City</string>
+    <string name="save">Save</string>
+    <string name="Google"> G+&#32;|&#32;Sign in with Google</string>
+    <string name="facebook"> f&#32;|&#32;Sign in with Facebook</string>
+    <integer name="splash_screen_duration">6000</integer>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_sign_up">SignUp</string>
+    <string name="title_activity_menu">Menu</string>
+    <string name="text1">Terms &amp; Conditions</string>
+    <string name="text2">&lt;&#8212;&lt;&lt; Set Reminder</string>
+    <string name="text3">Settings</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="notifications">Notification</string>
+    <string name="title_activity_user_menu">UserMenu</string>
+    <string-array name="languages_supported">
+        <item>English</item>
+        <item>Hindi</item>
+        <item>Tamil</item>
+        <item>Telgu</item>
+        <item>Gujarati</item>
+    </string-array>
+    <string-array name="font_size">
+        <item>12pt</item>
+        <item>14pt</item>
+        <item>16pt</item>
+        <item>18pt</item>
+        <item>20pt</item>
+
+    </string-array>
+    <string-array name="ring_tones">
+        <item>Default alarm sound</item>
+        <item>Argon</item>
+        <item>BeepBeep Alarm</item>
+        <item>Beep-Beep Alarm </item>
+        <item>Buzzer Alarm</item>
+        <item>Carbon</item>
+        <item>Cesium</item>
+        <item>Helium</item>
+        <item>Krypton</item>
+        <item>Neon</item>
+        <item>Osmium</item>
+        <item>Oxygen</item>
+        <item>Piezo Alarm</item>
+        <item>Platinum</item>
+        <item>Rooster Alarm</item>
+    </string-array>
+    <string-array name="day">
+        <item>Tomorrow</item>
+    </string-array>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="text4">Diary</string>
+    <string name="text5">Settings</string>
+    <string name="text6">User Guide</string>
+    <string name="text7">Share</string>
+    <string name="text8">Rate Us</string>
+    <string name="text9">Terms and Conditions</string>
+    <string name="text10">Set Reminder</string>
+    <string name="text11">Log Out</string>
+    <string name="text12">Alarm Sound</string>
+    <string name="text13">Device sounds</string>
+
+</resources>

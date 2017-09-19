@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\Aayush Kumar\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="D:\android\Geeta\app\build\intermediates\pre-dexed\debug\support-annotations-24.2.1_cbbd7119b87defa5ecada43f5a39f1cb122e0d2e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android\Geeta\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="D:\android\Geeta\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-24.2.1_08ff90608d9979ed8272bdd9ce33d147e1775d82.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android\Geeta\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="D:\android\Geeta\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_218b77f1c213d6d1e59c6fff94f051a0a86ac7e8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android\Geeta\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
+        <dex dex="D:\android\Geeta\app\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-24.2.1_0b2e5fe94fa6b02e210be726182a4d3b0ea083a0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android\Geeta\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="D:\android\Geeta\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-24.2.1_7bed8aea94e8da4c5832364a8d06ec7832a5c856.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android\Geeta\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="D:\android\Geeta\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_7027b5aacd9d4ac0c39b6d87db7288d83751e8f0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android\Geeta\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="D:\android\Geeta\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_7360b0112b39dcc042a50e8481d967c35ca5b340.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android\Geeta\app\build\intermediates\exploded-aar\com.android.support\design\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="D:\android\Geeta\app\build\intermediates\pre-dexed\debug\com.android.support-design-24.2.1_19b4620f50a49ec4bed673f859e54e9b63695096.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android\Geeta\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="D:\android\Geeta\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-24.2.1_fb75ddbf56e031b7c8a179383905ab093b001629.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android\Geeta\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="D:\android\Geeta\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-24.2.1_30c0b10e2278854d12e3d1301062d76431d7fab3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android\Geeta\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="D:\android\Geeta\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-24.2.1_4ebe6e83aad80237e666588cb0e9197afec85005.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android\Geeta\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="D:\android\Geeta\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-24.2.1_55821501504b2d6766c17c25c96fe4511ecf90eb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android\Geeta\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="D:\android\Geeta\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-24.2.1_60363c7a0b3b17be8f61d37e0d9313ddb5f1523b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android\Geeta\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="D:\android\Geeta\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-24.2.1_e5c4380ba3098c21967fe8b22a626465f4a2bc43.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android\Geeta\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="D:\android\Geeta\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-24.2.1_4faf91cba6dadfee9d411445c59491f9a418a523.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android\Geeta\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="D:\android\Geeta\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_ae4ee7e2f7a9394443f2601103ac4db5ebbf1ef3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android\Geeta\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="D:\android\Geeta\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_c1eb65f705cad8cf384e353517253ae41ba8c55e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\android\Geeta\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="D:\android\Geeta\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-24.2.1_2a20bda3aa3cc309f4edfcfea7cc53d3c0b5095e.jar" />
+    </item>
+
+</items>

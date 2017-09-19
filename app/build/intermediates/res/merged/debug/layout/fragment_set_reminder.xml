@@ -1,0 +1,102 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/setReminder"
+    tools:context="com.application.aayush.geeta.SetReminder">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:background="@color/backgroundcolor1"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:layout_height="50dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="0dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/toobar_title"
+            android:text="Set Reminder"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/colorwhite"
+            android:layout_marginTop="20dp"
+            android:textSize="22sp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="64dp"
+            />
+            <Button
+                android:viewportHeight="24.0"
+                android:viewportWidth="24.0"
+                android:layout_centerVertical="true"
+                android:id="@+id/button14"
+                android:background="@mipmap/back_arrow_white"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_height="24dp"
+                android:layout_width="24dp"
+                android:layout_alignParentStart="true" />
+      </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp"
+        android:addStatesFromChildren="false"
+
+
+        android:fillViewport="false"
+        android:clipToPadding="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="200dp"
+            android:src="@mipmap/set_alarm"
+            android:id="@+id/imageView7"
+            android:layout_height="200dp"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="115dp"
+            android:layout_gravity="center_horizontal"/>
+        <TextView
+            android:text="Need a reminder for reading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView25"
+            android:textSize="22sp"
+            android:textColor="@color/colorMaroon"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp" />
+        <TextView
+            android:text="Add a reminder to read"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView26"
+            android:textSize="18sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp" />
+
+    <Button
+        android:text="Add Reminder"
+        android:layout_width="230dp"
+        android:id="@+id/button8"
+        android:background="@color/backgroundcolor1"
+        android:textColor="@color/colorwhite"
+        android:layout_marginBottom="37dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="35dp"
+        android:layout_marginTop="75dp" />
+    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
