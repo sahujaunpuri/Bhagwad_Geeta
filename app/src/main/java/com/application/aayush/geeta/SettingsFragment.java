@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -30,7 +31,8 @@ public class SettingsFragment extends Fragment {
     Spinner languages,fonts;
     Switch notifications,readMode;
     Toolbar toolbar;
-    Button notify,navigate;
+    Button notify;
+    ImageButton navigate;
     String name,mobile_number,email,address,city;
     public SettingsFragment() {
         // Required empty public constructor
@@ -47,7 +49,7 @@ public class SettingsFragment extends Fragment {
         title = (TextView)view.findViewById(R.id.toobar_title);
         notify = (Button)view.findViewById(R.id.notification_button1);
         title.setTypeface(customFont);
-        navigate = (Button)view.findViewById(R.id.button14);
+        navigate = (ImageButton) view.findViewById(R.id.button14);
         name = getArguments().getString("user_name");
         mobile_number = getArguments().getString("user_mobilenumber");
         email = getArguments().getString("user_email");

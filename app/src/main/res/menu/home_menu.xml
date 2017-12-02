@@ -4,7 +4,7 @@
 
     <item android:id="@+id/menu_item"
         android:orderInCategory="100"
-        android:icon="@mipmap/notification"
+        android:icon="@mipmap/shell"
         android:title="Notifications"
         app:showAsAction="always"
         />  //set showAsAction always

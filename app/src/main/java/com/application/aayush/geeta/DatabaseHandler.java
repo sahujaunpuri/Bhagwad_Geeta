@@ -17,12 +17,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "userManager";
     private static final String TABLE_USER = "user";
-    private static final String KEY_ID = "id";
+    private static String KEY_ID = "id";
     private static final String KEY_NAME = "name";
     private static final String KEY_MOB_NO = "mobile_number";
     private static final String KEY_EMAIL = "email_id";
     private static final String KEY_ADDRESS = "address";
     private static final String KEY_CITY = "city";
+
+
     public DatabaseHandler(Context context){
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
         //3rd argument to be passed is cursorFactory instance
@@ -32,7 +34,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_USER_TABLE = "CREATE TABLE " +TABLE_USER +"("+KEY_ID+" INTEGER PRIMARY KEY ,"+KEY_NAME+" VARCHAR(20),"+KEY_MOB_NO+" VARCHAR(20),"+KEY_EMAIL+" VARCHAR(64),"+KEY_ADDRESS+" VARCHAR(64),"+KEY_CITY+" VARCHAR(64)"+")";
+        String CREATE_USER_TABLE = "CREATE TABLE " +TABLE_USER +"("
+                +KEY_ID+" INTEGER PRIMARY KEY ,"
+                +KEY_NAME+" VARCHAR(20),"
+                +KEY_MOB_NO+" VARCHAR(20),"
+                +KEY_EMAIL+" VARCHAR(64),"
+                +KEY_ADDRESS+" VARCHAR(64),"
+                +KEY_CITY+" VARCHAR(64)"
+                +")";
         db.execSQL(CREATE_USER_TABLE);
     }
 
@@ -81,7 +90,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     void addUser(UserProfile userProfile){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(KEY_ID,userProfile.getUser_id());
         values.put(KEY_NAME,userProfile.getName());
         values.put(KEY_MOB_NO,userProfile.getMobile_no());
         values.put(KEY_EMAIL,userProfile.getEmail_id());
@@ -98,11 +106,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     UserProfile getUser(int id){
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_USER,new String[]{KEY_ID,KEY_NAME,KEY_MOB_NO,KEY_EMAIL,KEY_ADDRESS,KEY_CITY},KEY_ID+"=?",new String[]{String.valueOf(id)},null,null,null,null);
+        Cursor cursor = db.query(
+                TABLE_USER,
+                new String[]{KEY_ID,KEY_NAME,KEY_MOB_NO,KEY_EMAIL,KEY_ADDRESS,KEY_CITY},
+                KEY_ID+"=?",new String[]{String.valueOf(id)},null,null,null,null
+        );
           if (cursor != null)
               cursor.moveToFirst();
 
         UserProfile  userProfile = new UserProfile(Integer.parseInt(cursor.getString(0)),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5));
+        cursor.close();
         return userProfile;
     }
     public int updateUser(UserProfile userProfile){
@@ -114,9 +127,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_EMAIL,userProfile.getEmail_id());
         values.put(KEY_ADDRESS,userProfile.getAddress());
         values.put(KEY_CITY,userProfile.getCity());
-
+        int update_count = db.update(TABLE_USER,values,KEY_ID+"=?",new String[]{String.valueOf(userProfile.getUser_id())});
+        db.close();
         //updating row
-        return db.update(TABLE_USER,values,KEY_ID+"=?",new String[]{String.valueOf(userProfile.getUser_id())});
+        return update_count;
 
     }
     public void deleteUser(UserProfile userProfile){
@@ -126,10 +140,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
     public int userCount(){
-        String countQuery = "SELECT * FROM"+TABLE_USER;
-        SQLiteDatabase db = this.getReadableDatabase();
+        String countQuery = "SELECT * FROM "+TABLE_USER;
+        SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(countQuery,null);
+        if(cursor == null){
+            return  0;
+        }
+        int count = cursor.getCount();
         cursor.close();
-        return  cursor.getCount();
+        return  count;
     }
+
+
 }

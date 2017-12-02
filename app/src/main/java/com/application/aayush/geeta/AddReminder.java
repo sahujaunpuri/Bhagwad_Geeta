@@ -1,6 +1,9 @@
 package com.application.aayush.geeta;
 
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
@@ -23,6 +26,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.content.Context.ALARM_SERVICE;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -38,7 +43,7 @@ public class AddReminder extends Fragment {
     Switch aSwitch;
     CheckBox repeat,vibrate;
     Button sunday,monday,tuesday,wednesday,thursday,friday,saturday,alarm,delete,open_close;
-    RelativeLayout.LayoutParams alarmImage,params,delete_params,openclose_params,param1;
+    RelativeLayout.LayoutParams alarmImage,params,delete_params,openclose_params,param1,day;
     EditText label;
     TextInputLayout textInputLayout;
     String text;
@@ -54,6 +59,22 @@ public class AddReminder extends Fragment {
     //    final View view =  inflater.inflate(R.layout.fragment_add_reminder, container, false);
         final View view =  inflater.inflate(R.layout.layout_add_reminder, container, false);
         bundle = getArguments();
+        final int left = (int)getResources().getDimensionPixelSize(R.dimen.ai_left);
+        final int top = (int)getResources().getDimensionPixelSize(R.dimen.ai_top);
+        final int right = (int)getResources().getDimensionPixelSize(R.dimen.ai_right);
+        final int bottom = (int)getResources().getDimensionPixelSize(R.dimen.ai_bottom);
+        final int left1 = (int)getResources().getDimensionPixelSize(R.dimen.p_left);
+        final int top1 = (int)getResources().getDimensionPixelSize(R.dimen.p_top);
+        final int right1 = (int)getResources().getDimensionPixelSize(R.dimen.p_right);
+        final int top2 = (int)getResources().getDimensionPixelSize(R.dimen.d_top);
+        final int bottom1 = (int)getResources().getDimensionPixelSize(R.dimen.d_bottom);
+        final int top3 = (int)getResources().getDimensionPixelSize(R.dimen.oc_top);
+        final int right2 = (int)getResources().getDimensionPixelSize(R.dimen.oc_right);
+        final int top4 = (int)getResources().getDimensionPixelSize(R.dimen.ai_top1);
+        final int top5 = (int)getResources().getDimensionPixelSize(R.dimen.p_top2);
+        final int top6 = (int)getResources().getDimensionPixelSize(R.dimen.d_top1);
+        final int top7 = (int)getResources().getDimensionPixelSize(R.dimen.oc_top1);
+
         time = (TextView)view.findViewById(R.id.textView47);
         aSwitch = (Switch)view.findViewById(R.id.switch3);
         repeat = (CheckBox)view.findViewById(R.id.checkBox3);
@@ -71,7 +92,7 @@ public class AddReminder extends Fragment {
         delete = (Button)view.findViewById(R.id.button18);
         open_close = (Button)view.findViewById(R.id.button19);
         param1 = (RelativeLayout.LayoutParams)sunday.getLayoutParams();
-
+        day  = (RelativeLayout.LayoutParams)sunday.getLayoutParams();
         alarmImage = (RelativeLayout.LayoutParams)alarm.getLayoutParams();
         delete_params = (RelativeLayout.LayoutParams)delete.getLayoutParams();
         params = (RelativeLayout.LayoutParams)textInputLayout.getLayoutParams();
@@ -80,10 +101,10 @@ public class AddReminder extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (repeat.isChecked()){
-                    alarmImage.setMargins(4,158,15,0);
-                    params.setMargins(14,188,35,0);
-                    delete_params.setMargins(4,267,15,10);
-                    openclose_params.setMargins(0,272,15,10);
+                    alarmImage.setMargins(left,top,right,bottom);
+                    params.setMargins(left1,top1,right,bottom);
+                    delete_params.setMargins(left,top2,right,bottom1);
+                    openclose_params.setMargins(0,top3,right2,bottom1);
                     sunday.setVisibility(View.VISIBLE);
                     monday.setVisibility(View.VISIBLE);
                     tuesday.setVisibility(View.VISIBLE);
@@ -99,10 +120,10 @@ public class AddReminder extends Fragment {
                     Toast.makeText(AddReminder.this.getContext(),String.valueOf(param1.topMargin), Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    alarmImage.setMargins(4,109,15,0);
-                    params.setMargins(14,139,35,0);
-                    delete_params.setMargins(4,218,15,10);
-                    openclose_params.setMargins(0,223,15,10);
+                    alarmImage.setMargins(left,top4,right,0);
+                    params.setMargins(left1,top5,right1,0);
+                    delete_params.setMargins(left,top6,right,bottom1);
+                    openclose_params.setMargins(0,top7,right,bottom1);
                     sunday.setVisibility(View.GONE);
                     monday.setVisibility(View.GONE);
                     tuesday.setVisibility(View.GONE);

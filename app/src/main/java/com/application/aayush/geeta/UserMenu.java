@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,33 +19,52 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import java.text.StringCharacterIterator;
+import java.util.List;
+
+import static java.lang.System.out;
+
 public class UserMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    TextView header,header2,header3,header4,textView1,textView2,textView3,learningText,name,contact_no;
+    TextView chapter,header,header2,header3,header4,textView1,textView2,textView3,learningText,name,contact_no;
+    Button edit;
     ViewSwitcher viewSwitcher;
     String uname,umobilenumber,uemail,uaddress,ucity;
     EditText editText;
-    Button edit,play_music;
+    Button play_music,save;
     ImageButton rate1,rate2,rate3,rate4,rate5,rate6,rate7,rate8,rate9,rate10;
-    Bundle bundle;
+    Bundle bundle,bundle1;
+    String verse,translation,purport,title,diary_entry;
+
+    ImageView back,front;
+    int id = 0,count = 0,chapter_no = 0,chapter_id = 0;
+    DiaryDatabaseHandler diaryDatabaseHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_menu);
-        Drawable drawable= getResources().getDrawable(R.mipmap.menu);
+        final DataBaseHandlerShloka db = new DataBaseHandlerShloka(this);
+        diaryDatabaseHandler = new DiaryDatabaseHandler(this);
+        Drawable drawable= getResources().getDrawable(R.mipmap.menu1);
         Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-        Drawable new_drawable = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 24, 24, true));
+        Drawable new_drawable = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 54, 54, true));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(new_drawable);
+        back = (ImageView)findViewById(R.id.imageView18);
+        front = (ImageView)findViewById(R.id.imageView21);
+        chapter = (TextView)findViewById(R.id.textView14);
         header = (TextView)findViewById(R.id.textView13);
         textView1 = (TextView)findViewById(R.id.textView20);
         header2 = (TextView)findViewById(R.id.textView40);
@@ -53,7 +73,9 @@ public class UserMenu extends AppCompatActivity
         textView2 = (TextView)findViewById(R.id.textView41);
         textView3 = (TextView)findViewById(R.id.textView43);
         learningText = (TextView)findViewById(R.id.learning_text);
-        edit = (Button)findViewById(R.id.button15);
+        editText = (EditText)findViewById(R.id.hidden_edit_view);
+        edit = (Button) findViewById(R.id.editbutton);
+        save = (Button)findViewById(R.id.button20);
         Typeface customFont = Typeface.createFromAsset(getAssets(),"fonts/Lato-Regular.ttf");
         Typeface customFont1 = Typeface.createFromAsset(getAssets(),"fonts/Lato-Heavy.ttf");
         Typeface customFont2 = Typeface.createFromAsset(getAssets(),"fonts/Lato-Italic.ttf");
@@ -65,26 +87,310 @@ public class UserMenu extends AppCompatActivity
         textView2.setTypeface(customFont);
         textView3.setTypeface(customFont);
         learningText.setTypeface(customFont2);
-        textView1.setText(" Yada yada hi dharmasya glanirbhavati bharata Abhythanamadharmasya tadatmanam srijamyaham");
-        textView2.setText(" Whenever there is decay of righteousness, O Bharata,And there is exaltation of unrighteousness, then I Myself come forth");
-        textView3.setText("Whenever virtue subsides and wickedness prevails, I manifest Myself. To establish virtue, to destroy evil, to save the good I come from Yuga (age) to Yuga.");
+        count = db.userCount();
+        Shlokas shlokas = db.getsholka(1);
+        id = shlokas.getId();
+        title = "Chapter "+String.valueOf(id);
+        verse = shlokas.getVerse_details();
+        translation = shlokas.getVerse_translation();
+        purport = shlokas .getVerse_purpose();
+        chapter_id = shlokas.getChapter_id();
+        chapter.setText(String.valueOf(id));
+        textView1.setText(verse);
+        textView2.setText(translation);
+        textView3.setText(purport);
+        Toast.makeText(UserMenu.this,"Chapter_ID "+String.valueOf(chapter_id),Toast.LENGTH_SHORT).show();
+        List<Shlokas> shlokases = db.getAllShlokas();
+        for (Shlokas up:shlokases) {
+            String log = "ID:" + up.getId() + ",Verse:" + up.getVerse_details() + ",Translation:" + up.getVerse_translation() + ",Purpose:" + up.getVerse_purpose() + ",Chapter_id" + up.getChapter_id();
+            //writing users to the list
+            Log.d("Entry:",log);
+        }
+
+        int r = db.getChapterId(Integer.parseInt(chapter.getText().toString()));
+
+        if(r == 0){
+            save.setVisibility(View.VISIBLE);
+            edit.setVisibility(View.GONE);
+            save.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String data_to_be_saved = editText.getText().toString();
+                    Toast.makeText(UserMenu.this,editText.getText().toString(),Toast.LENGTH_SHORT).show();
+                    saveData(data_to_be_saved,chapter);
+                    learningText = (TextView)findViewById(R.id.learning_text);
+                    learningText.setVisibility(View.VISIBLE);
+                    editText.setVisibility(View.GONE);
+                    learningText.setText(data_to_be_saved);
+
+                }
+            });
+        }
+        else if(r == 1){
+            Toast.makeText(UserMenu.this,"After Refresh",Toast.LENGTH_SHORT).show();
+
+            save.setVisibility(View.GONE);
+            edit.setVisibility(View.VISIBLE);
+            Diary diary = diaryDatabaseHandler.getContent(Integer.parseInt(chapter.getText().toString()));
+            final String data = diary.getDiary_details();
+            learningText.setVisibility(View.VISIBLE);
+            editText.setVisibility(View.GONE);
+            learningText.setText(data);
+            edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(UserMenu.this,data,Toast.LENGTH_SHORT).show();
+
+                }
+            });
+        }
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chapter_no = Integer.parseInt(chapter.getText().toString());
+
+                 if(chapter_no == 1){
+                    chapter_no = db.userCount();
+                    Shlokas shlokas = db.getsholka(chapter_no);
+                    id = shlokas.getId();
+                    verse = shlokas.getVerse_details();
+                    translation = shlokas.getVerse_translation();
+                    purport = shlokas .getVerse_purpose();
+                    chapter_id = shlokas.getChapter_id();
+/*
+                    Diary diary = diaryDatabaseHandler.getContent(chapter_no);
+                    if(diary == null){}
+                    else {
+                        diary_entry = diary.getDiary_details();
+                        learningText.setText(diary_entry);
+
+                    }
+*/
+                    if (chapter_id == 0){
+                        //learningText.setText("What do you learn from today's Chapter...");
+                        learningText.setText("Chapter 1");
+                        save.setVisibility(View.VISIBLE);
+                        edit.setVisibility(View.GONE);
+                        save.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                String data_to_be_saved = editText.getText().toString();
+                                Toast.makeText(UserMenu.this,editText.getText().toString(),Toast.LENGTH_SHORT).show();
+                                saveData(data_to_be_saved,chapter);
+                                learningText = (TextView)findViewById(R.id.learning_text);
+                                learningText.setVisibility(View.VISIBLE);
+                                editText.setVisibility(View.GONE);
+                                learningText.setText(data_to_be_saved);
+
+                            }
+                        });
+
+                    }
+                    else{
+                        Diary diary = diaryDatabaseHandler.getContent(chapter_no);
+                        diary_entry = diary.getDiary_details();
+                        learningText.setText(diary_entry);
+
+                    }
+                    chapter.setText(String.valueOf(chapter_no));
+                    textView1.setText(verse);
+                    textView2.setText(translation);
+                    textView3.setText(purport);
+
+               }
+                else {
+                    chapter_no = chapter_no - 1;
+                    Shlokas shlokas = db.getsholka(chapter_no);
+/*
+                    Diary diary = diaryDatabaseHandler.getContent(chapter_no);
+                    if(diary == null){}
+                    else {
+                        diary_entry = diary.getDiary_details();
+                        learningText.setText(diary_entry);
+
+                    }
+*/
+                    if (chapter_id == 0){
+//                        learningText.setText("What do you learn from today's Chapter...");
+                        learningText.setText("Chapter 1");
+                        save.setVisibility(View.VISIBLE);
+                        edit.setVisibility(View.GONE);
+                        save.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                String data_to_be_saved = editText.getText().toString();
+                                Toast.makeText(UserMenu.this,editText.getText().toString(),Toast.LENGTH_SHORT).show();
+                                saveData(data_to_be_saved,chapter);
+                                learningText = (TextView)findViewById(R.id.learning_text);
+                                learningText.setVisibility(View.VISIBLE);
+                                editText.setVisibility(View.GONE);
+                                learningText.setText(data_to_be_saved);
+
+                            }
+                        });
+
+                    }
+                    else{
+                        Diary diary = diaryDatabaseHandler.getContent(chapter_no);
+                        diary_entry = diary.getDiary_details();
+                        learningText.setText(diary_entry);
+
+                    }
+
+                    id = shlokas.getId();
+                    verse = shlokas.getVerse_details();
+                    translation = shlokas.getVerse_translation();
+                    purport = shlokas.getVerse_purpose();
+                    chapter_id = shlokas.getChapter_id();
+                    out.println(chapter_id);
+                    chapter.setText(String.valueOf(chapter_no));
+                    textView1.setText(verse);
+                    textView2.setText(translation);
+                    textView3.setText(purport);
+                    }
+            }
+        });
+        front.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chapter_no = Integer.parseInt(chapter.getText().toString());
+                 if (chapter_no == db.userCount()){
+                    chapter_no = 1;
+                    Shlokas shlokas = db.getsholka(chapter_no);
+/*
+                    Diary diary = diaryDatabaseHandler.getContent(chapter_no);
+                    if(diary == null){}
+                    else {
+                        diary_entry = diary.getDiary_details();
+                        learningText.setText(diary_entry);
+
+                    }
+*/
+                    if (chapter_id == 0){
+                     //   learningText.setText("What do you learn from today's Chapter...");
+                        learningText.setText("Chapter 1");
+                        save.setVisibility(View.VISIBLE);
+                        edit.setVisibility(View.GONE);
+                        save.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                String data_to_be_saved = editText.getText().toString();
+                                Toast.makeText(UserMenu.this,editText.getText().toString(),Toast.LENGTH_SHORT).show();
+                                saveData(data_to_be_saved,chapter);
+                                learningText = (TextView)findViewById(R.id.learning_text);
+                                learningText.setVisibility(View.VISIBLE);
+                                editText.setVisibility(View.GONE);
+                                learningText.setText(data_to_be_saved);
+
+                            }
+                        });
+
+                    }
+                    else{
+                        Diary diary = diaryDatabaseHandler.getContent(chapter_no);
+                        diary_entry = diary.getDiary_details();
+                        learningText.setText(diary_entry);
+                        save.setVisibility(View.GONE);
+                        edit.setVisibility(View.VISIBLE);
+                        Toast.makeText(UserMenu.this,"Inside else of Front button",Toast.LENGTH_SHORT).show();
+                    }
+                    id = shlokas.getId();
+                    verse = shlokas.getVerse_details();
+                    translation = shlokas.getVerse_translation();
+                    purport = shlokas .getVerse_purpose();
+                    chapter_id = shlokas.getChapter_id();
+                    out.println(chapter_id);
+                    chapter.setText(String.valueOf(chapter_no));
+                    textView1.setText(verse);
+                    textView2.setText(translation);
+                    textView3.setText(purport);
+
+
+                }
+                else {
+                    chapter_no = chapter_no + 1;
+                    Shlokas shlokas = db.getsholka(chapter_no);
+/*
+                    Diary diary = diaryDatabaseHandler.getContent(chapter_no);
+                    if(diary == null){}
+                    else {
+                        diary_entry = diary.getDiary_details();
+                        learningText.setText(diary_entry);
+
+                    }
+*/
+                    if (chapter_id == 0){
+                     //   learningText.setText("What do you learn from today's Chapter...");
+                        learningText.setText("Chapter 1");
+                    }
+                    else{
+                        Diary diary = diaryDatabaseHandler.getContent(chapter_no);
+                        diary_entry = diary.getDiary_details();
+                        learningText.setText(diary_entry);
+
+                    }
+
+                    id = shlokas.getId();
+                    verse = shlokas.getVerse_details();
+                    translation = shlokas.getVerse_translation();
+                    purport = shlokas.getVerse_purpose();
+                    chapter_id = shlokas.getChapter_id();
+                    out.println(chapter_id);
+                    chapter.setText(String.valueOf(chapter_no));
+                    textView1.setText(verse);
+                    textView2.setText(translation);
+                    textView3.setText(purport);
+                    }
+            }
+        });
+        int r1 = db.getChapterId(Integer.parseInt(chapter.getText().toString()));
+        Toast.makeText(UserMenu.this.getApplicationContext(),String.valueOf(r1),Toast.LENGTH_SHORT).show();
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // create a frame layout
+                //FrameLayout frameLayout = new FrameLayout(getApplicationContext());
+                RelativeLayout relativeLayout = new RelativeLayout(getApplicationContext());
+                // set the layout params to fill the activity
+                relativeLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                // set an id to the layout
+                relativeLayout.setId(R.id.fragment_chapter);
+                // set the layout as Activity content
+                setContentView(relativeLayout);
+                // Finally , add the fragment
+                Chapter chapter = new Chapter();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().add(R.id.fragment_chapter,chapter).commit();
+            }
+        });
         play_music = (Button)findViewById(R.id.imageButton2);
         final MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.yada_yada_hi);
         //drawerLayout = (DrawerLayout)view.findViewById(R.id.drawer_layout);
+        viewSwitcher = (ViewSwitcher)findViewById(R.id.view_switcher);
         bundle = getIntent().getExtras();
         uname = bundle.getString("user_name");
         umobilenumber = bundle.getString("user_mobilenumber");
         uemail = bundle.getString("user_email");
         uaddress = bundle.getString("user_address");
         ucity = bundle.getString("user_city");
-        edit.setOnClickListener(new View.OnClickListener() {
+        learningText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewSwitcher = (ViewSwitcher)findViewById(R.id.view_switcher);
-                viewSwitcher.showNext();
-                editText = (EditText)findViewById(R.id.hidden_edit_view);
+                editText.setVisibility(View.VISIBLE);
+                learningText.setVisibility(View.GONE);
+
             }
         });
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(UserMenu.this,"Editext",Toast.LENGTH_SHORT).show();
+                learningText.setVisibility(View.VISIBLE);
+                learningText.setText(editText.getText().toString());
+                editText.setVisibility(View.GONE);
+            }
+        });
+
         play_music.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,7 +404,6 @@ public class UserMenu extends AppCompatActivity
                 startActivity(intent);*/
             }
         });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -129,6 +434,19 @@ public class UserMenu extends AppCompatActivity
         contact_no = (TextView)headerView.findViewById(R.id.mobile_no);
         name.setText(uname);
         contact_no.setText(umobilenumber);
+
+    }
+    private void saveData(String data_to_be_saved, TextView chapter) {
+        DiaryDatabaseHandler diaryDatabaseHandler = new DiaryDatabaseHandler(this);
+        DataBaseHandlerShloka dataBaseHandlerShloka = new DataBaseHandlerShloka(this);
+        int chapter_no = Integer.parseInt(chapter.getText().toString());
+        Toast.makeText(getApplicationContext(),data_to_be_saved + " "+Integer.toString(chapter_no),Toast.LENGTH_SHORT).show();
+        diaryDatabaseHandler.addContent(new Diary(chapter_no,data_to_be_saved));
+        dataBaseHandlerShloka.addChapter(new Shlokas(chapter_no,chapter_no));
+        int v = dataBaseHandlerShloka.addChapter(new Shlokas(chapter_no,chapter_no));
+
+        out.print("**************"+v);
+
 
     }
 

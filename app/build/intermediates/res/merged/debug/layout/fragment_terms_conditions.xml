@@ -16,34 +16,34 @@
         app:contentInsetStart="0dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="0dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/toobar_title"
-                android:text="Terms &amp; Conditions"
-                android:layout_alignParentLeft="true"
-                android:textColor="@color/colorwhite"
-                android:layout_marginTop="20dp"
-                android:textSize="22sp"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="64dp"
-                />
 
-    <Button
-        android:viewportHeight="24.0"
-        android:viewportWidth="24.0"
-        android:layout_centerVertical="true"
-        android:id="@+id/button41"
-        android:background="@mipmap/back_arrow_white"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_height="24dp"
-        android:layout_width="24dp"
-        android:layout_alignParentStart="true" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="0dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/toobar_title"
+            android:text="Terms &amp; Conditions"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/colorwhite"
+            android:layout_marginTop="20dp"
+            android:textSize="@dimen/font3"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="64dp"/>
+
+        <ImageButton
+            android:id="@+id/button41"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:background="@mipmap/white_arrow_1"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="17dp"/>
+
+
+
 </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
@@ -104,6 +104,5 @@
         android:layout_alignStart="@+id/textView19"
         android:layout_alignEnd="@+id/textView22"
         android:textColor="@color/colorwhite"
-        android:background="@color/backgroundcolor1"
- />
+        android:background="@color/backgroundcolor1" />
 </RelativeLayout>

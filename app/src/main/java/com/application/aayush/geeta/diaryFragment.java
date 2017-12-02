@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 
@@ -26,7 +27,8 @@ public class diaryFragment extends Fragment {
     TextView chapter1,chapter2;
     String name,mobile_number,email,address,city;
     FrameLayout frameLayout1,frameLayout2;
-    Button notify,back;
+    Button notify;
+    ImageButton back;
     public diaryFragment() {
         // Required empty public constructor
     }
@@ -49,7 +51,7 @@ public class diaryFragment extends Fragment {
         email = getArguments().getString("user_email");
         address = getArguments().getString("user_address");
         city = getArguments().getString("user_city");
-        back = (Button)view.findViewById(R.id.button14);
+        back = (ImageButton) view.findViewById(R.id.button14);
        /* toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,7 +100,7 @@ public class diaryFragment extends Fragment {
         frameLayout1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Chapter1 chapter1 = new Chapter1();
+                Chapter chapter1 = new Chapter();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.content_user_menu,chapter1,chapter1.getTag()).commit();
 

@@ -10,16 +10,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Chapter1 extends Fragment {
+public class Chapter extends Fragment {
 
     Toolbar toolbar;
-    Button back;
-    public Chapter1() {
+    ImageButton back;
+    public Chapter() {
         // Required empty public constructor
     }
 
@@ -28,9 +29,9 @@ public class Chapter1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_chapter1, container, false);
+        View view = inflater.inflate(R.layout.fragment_chapter, container, false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
-        back = (Button)view.findViewById(R.id.notification_button1);
+        back = (ImageButton) view.findViewById(R.id.button14);
         toolbar = (Toolbar)view.findViewById(R.id.my_toolbar);
         back.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -17,7 +17,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_sign_up">SignUp</string>
     <string name="title_activity_menu">Menu</string>
-    <string name="text1">Terms &amp; Conditions</string>
+    <string name="text1">Add Reminder</string>
     <string name="text2">&lt;&#8212;&lt;&lt; Set Reminder</string>
     <string name="text3">Settings</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -42,21 +42,15 @@
 
     </string-array>
     <string-array name="ring_tones">
-        <item>Default alarm sound</item>
         <item>Argon</item>
-        <item>BeepBeep Alarm</item>
-        <item>Beep-Beep Alarm </item>
-        <item>Buzzer Alarm</item>
         <item>Carbon</item>
-        <item>Cesium</item>
         <item>Helium</item>
         <item>Krypton</item>
         <item>Neon</item>
         <item>Osmium</item>
         <item>Oxygen</item>
-        <item>Piezo Alarm</item>
         <item>Platinum</item>
-        <item>Rooster Alarm</item>
+        <item>Timer</item>
     </string-array>
     <string-array name="day">
         <item>Tomorrow</item>
@@ -68,10 +62,10 @@
     <string name="text6">User Guide</string>
     <string name="text7">Share</string>
     <string name="text8">Rate Us</string>
-    <string name="text9">Terms and Conditions</string>
+    <string name="text9">Why Geeta</string>
     <string name="text10">Set Reminder</string>
     <string name="text11">Log Out</string>
     <string name="text12">Alarm Sound</string>
     <string name="text13">Device sounds</string>
-
+    <string name="diary_title">Diary</string>
 </resources>

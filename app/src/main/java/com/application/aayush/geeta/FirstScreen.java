@@ -29,11 +29,6 @@ public class FirstScreen extends AppCompatActivity {
         setContentView(R.layout.activity_firstscreen);
         heading = (TextView)findViewById(R.id.textView);
         content = (TextView)findViewById(R.id.textView16);
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        int height = displayMetrics.heightPixels;
-        int width = displayMetrics.widthPixels;
-        Toast.makeText(this,height+" "+width,Toast.LENGTH_SHORT).show();
         Typeface customFont = Typeface.createFromAsset(getAssets(),"fonts/Lato-Regular.ttf");
         heading.setTypeface(customFont);
         content.setTypeface(customFont);

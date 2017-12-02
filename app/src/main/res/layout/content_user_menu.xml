@@ -63,7 +63,7 @@
                     android:layout_marginTop="13dp"
                     android:layout_width="20dp" />
                 <TextView
-                    android:text="Chapter1"
+                    android:text="Chapter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView13"
@@ -71,12 +71,29 @@
                     android:layout_marginStart="46dp"
                     android:textSize="@dimen/small_text"
                     android:textColor="@color/colorblack" />
+               <TextView
+                    android:text=""
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView14"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginStart="93dp"
+                    android:textSize="@dimen/small_text"
+                    android:textColor="@color/colorblack" />
+
+                <ImageView
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@mipmap/arrow_new"
+                    android:id="@+id/imageView21"
+                    android:layout_marginStart="108dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_width="20dp" />
+
                 <RelativeLayout
                     android:id="@+id/relative1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    >
+                    android:layout_marginTop="30dp">
                     <View
                         android:layout_height="1dp"
                         android:background="@android:color/darker_gray"
@@ -89,6 +106,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView20"
+                        android:layout_below="@+id/view1"
                         android:layout_marginTop="20dp"
                         android:layout_marginLeft="45dp"
                         android:layout_marginRight="45dp"
@@ -121,7 +139,6 @@
                         android:layout_alignEnd="@+id/view1"
                         android:layout_marginTop="28dp"
                         android:layout_width="110dp" />
-
                     <TextView
                         android:text="Translation"
                         android:layout_width="wrap_content"
@@ -169,7 +186,7 @@
                         android:layout_marginTop="28dp"
                         android:layout_width="110dp" />
                     <TextView
-                        android:text="Purpose"
+                        android:text="Purport"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView42"
@@ -188,7 +205,6 @@
                         android:layout_marginLeft="45dp"
                         android:layout_marginRight="45dp"
                         android:layout_marginTop="10dp" />
-
                     <View
                         android:layout_height="1dp"
                         android:background="@android:color/darker_gray"
@@ -205,16 +221,16 @@
                         android:textSize="@dimen/ext_small_text"
                         android:layout_alignStart="@+id/view1"
                         android:layout_below="@+id/view6"
-                        android:layout_marginTop="10dp"
-                        />
+                        android:layout_marginTop="10dp"/>
                     <FrameLayout
                         android:id="@+id/frame_layout3"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_below="@+id/textView44"
                         android:layout_marginTop="7dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
+                        android:layout_marginBottom="7dp"
                         android:background="@color/colorgrey">
                         <ViewSwitcher
                             android:id="@+id/view_switcher"
@@ -222,63 +238,69 @@
                             android:layout_height="match_parent" >
                             <TextView
                                 android:id="@+id/learning_text"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
                                 android:clickable="true"
                                 android:text="What do you learn from today's Chapter..."
-                                android:textSize="@dimen/ext_xt_small_text" />
+                                android:textSize="@dimen/ext_small_text"
+                                android:visibility="invisible"/>
                             <EditText
                                 android:id="@+id/hidden_edit_view"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="match_parent"
+                                android:visibility="gone"/>
+
                         </ViewSwitcher>
                     </FrameLayout>
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    style="?android:attr/borderlessButtonStyle"
+    android:drawableStart="@mipmap/edit_dairy"
+    android:text="Edit"
+    android:background="@color/colorwhite"
+    android:id="@+id/editbutton"
+    android:textAllCaps="false"
+    android:textAlignment="viewStart"
+    android:visibility="gone"
+    android:layout_below="@+id/frame_layout3"
+    android:layout_alignStart="@+id/view1"
+                    android:fitsSystemWindows="true" />
+                   <Button
+                       android:layout_height="wrap_content"
+                       android:layout_width="wrap_content"
+                       android:id="@+id/sharebutton"
+                       style="?android:attr/borderlessButtonStyle"
+                       android:drawableStart="@mipmap/share_it_new"
+                       android:layout_below="@+id/frame_layout3"
+                       android:layout_alignEnd="@+id/frame_layout3"
+                       android:background="@color/colorwhite"
+                       android:text="Share"
+                       android:visibility="gone"
+                       android:textAlignment="viewStart"
+                       android:textAllCaps="false"
+                       android:fitsSystemWindows="true"/>
+
                     <Button
-                        android:id="@+id/button15"
-                        android:background="@mipmap/edit_dairy"
+                        android:text="Save"
+                        android:background="@color/colorMaroon"
+                        android:textColor="@color/colorwhite"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
                         android:layout_below="@+id/frame_layout3"
-                        android:layout_marginTop="7dp"
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
-                        android:layout_marginLeft="33dp"
-                        />
-                    <TextView
-                        android:text="Edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView45"
-                        android:layout_below="@+id/frame_layout3"
-                        android:layout_marginTop="7dp"
-                        android:layout_toRightOf="@+id/button15"
-                        android:clickable="false" />
-                    <Button
-                        android:id="@+id/button16"
-                        android:background="@mipmap/share"
-                        android:layout_below="@+id/frame_layout3"
-                        android:layout_toLeftOf="@+id/textView46"
-                        android:layout_height="10dp"
-                        android:layout_width="10dp" />
-                    <TextView
-                        android:text="Share"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView46"
-                        android:layout_below="@+id/frame_layout3"
-                        android:layout_marginTop="7dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="33dp" />
+                        android:layout_alignEnd="@+id/frame_layout3"
+                        android:id="@+id/button20" />
                     <View
                         android:layout_height="1dp"
                         android:background="@android:color/darker_gray"
                         android:id="@+id/view7"
-                        android:layout_below="@+id/textView46"
-                        android:layout_marginTop="7dp"
+                        android:layout_below="@+id/frame_layout3"
+                        android:layout_marginTop="57dp"
                         android:layout_marginBottom="20dp"
                         android:layout_width="match_parent"
                         android:layout_alignParentEnd="true" />
+
                 </RelativeLayout>
-
-
             </FrameLayout>
         </LinearLayout>
     </ScrollView>

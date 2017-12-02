@@ -1,5 +1,9 @@
 [
     {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\notification2.png",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-xxhdpi\\notification2.png"
+    },
+    {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher.png",
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },

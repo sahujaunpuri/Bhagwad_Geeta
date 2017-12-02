@@ -19,21 +19,15 @@
         <item>Gujarati</item>
     </string-array>
     <string-array name="ring_tones">
-        <item>Default alarm sound</item>
         <item>Argon</item>
-        <item>BeepBeep Alarm</item>
-        <item>Beep-Beep Alarm </item>
-        <item>Buzzer Alarm</item>
         <item>Carbon</item>
-        <item>Cesium</item>
         <item>Helium</item>
         <item>Krypton</item>
         <item>Neon</item>
         <item>Osmium</item>
         <item>Oxygen</item>
-        <item>Piezo Alarm</item>
         <item>Platinum</item>
-        <item>Rooster Alarm</item>
+        <item>Timer</item>
     </string-array>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
@@ -506,10 +500,18 @@
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
     <dimen name="activity_horizontal_margin">0dp</dimen>
     <dimen name="activity_vertical_margin">0dp</dimen>
+    <dimen name="ai_bottom">0dp</dimen>
+    <dimen name="ai_left">4dp</dimen>
+    <dimen name="ai_right">15dp</dimen>
+    <dimen name="ai_top">120dp</dimen>
+    <dimen name="ai_top1">64dp</dimen>
     <dimen name="body_size">16sp</dimen>
     <dimen name="cardview_compat_inset_shadow">1dp</dimen>
     <dimen name="cardview_default_elevation">2dp</dimen>
     <dimen name="cardview_default_radius">2dp</dimen>
+    <dimen name="d_bottom">10dp</dimen>
+    <dimen name="d_top">206dp</dimen>
+    <dimen name="d_top1">158dp</dimen>
     <dimen name="design_appbar_elevation">4dp</dimen>
     <dimen name="design_bottom_navigation_active_item_max_width">168dp</dimen>
     <dimen name="design_bottom_navigation_active_text_size">14sp</dimen>
@@ -550,10 +552,10 @@
     <dimen name="ext_small_text">10sp</dimen>
     <dimen name="ext_xt_small_text">8sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="font1">24sp</dimen>
-    <dimen name="font2">16sp</dimen>
-    <dimen name="font3">20sp</dimen>
-    <dimen name="font4">22sp</dimen>
+    <dimen name="font1">21sp</dimen>
+    <dimen name="font2">12.67sp</dimen>
+    <dimen name="font3">14sp</dimen>
+    <dimen name="font4">15sp</dimen>
     <dimen name="header_size">20sp</dimen>
     <item format="float" name="highlight_alpha_material_colored" type="dimen">0.26</item>
     <item format="float" name="highlight_alpha_material_dark" type="dimen">0.20</item>
@@ -566,6 +568,13 @@
     <dimen name="notification_large_icon_height">64dp</dimen>
     <dimen name="notification_large_icon_width">64dp</dimen>
     <dimen name="notification_subtext_size">12dp</dimen>
+    <dimen name="oc_right">15dp</dimen>
+    <dimen name="oc_top">210dp</dimen>
+    <dimen name="oc_top1">162dp</dimen>
+    <dimen name="p_left">14dp</dimen>
+    <dimen name="p_right">35dp</dimen>
+    <dimen name="p_top">150dp</dimen>
+    <dimen name="p_top2">103dp</dimen>
     <dimen name="small_text">12sp</dimen>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
     <item name="action_bar_activity_content" type="id"/>
@@ -628,6 +637,7 @@
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="city">City</string>
     <string name="close">Close</string>
+    <string name="diary_title">Diary</string>
     <string name="email">Email Id</string>
     <string name="facebook"> f | Sign in with Facebook</string>
     <string name="first_textview">Every Day</string>
@@ -642,7 +652,7 @@
     <string name="search_menu_title">Search</string>
     <string name="second_textview">Geeta</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="text1">Terms &amp; Conditions</string>
+    <string name="text1">Add Reminder</string>
     <string name="text10">Set Reminder</string>
     <string name="text11">Log Out</string>
     <string name="text12">Alarm Sound</string>
@@ -654,7 +664,7 @@
     <string name="text6">User Guide</string>
     <string name="text7">Share</string>
     <string name="text8">Rate Us</string>
-    <string name="text9">Terms and Conditions</string>
+    <string name="text9">Why Geeta</string>
     <string name="title_activity_menu">Menu</string>
     <string name="title_activity_sign_up">SignUp</string>
     <string name="title_activity_user_menu">UserMenu</string>

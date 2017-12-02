@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
@@ -23,7 +24,7 @@ import android.widget.ViewSwitcher;
  */
 public class Homescreen extends Fragment {
     Toolbar toolbar;
-    Button notify,play_music,edit;
+    Button play_music,edit,notify;
     DrawerLayout drawerLayout;
     TextView header,header2,header3,header4,textView1,textView2,textView3,learningText;
     ViewSwitcher viewSwitcher;
@@ -71,7 +72,7 @@ public class Homescreen extends Fragment {
         textView2.setText(" Whenever there is decay of righteousness, O Bharata,And there is exaltation of unrighteousness, then I Myself come forth");
         textView3.setText("Whenever virtue subsides and wickedness prevails, I manifest Myself. To establish virtue, to destroy evil, to save the good I come from Yuga (age) to Yuga.");
 
-        notify = (Button)view.findViewById(R.id.notification_button1);
+        notify = (Button) view.findViewById(R.id.notification_button1);
         play_music = (Button)view.findViewById(R.id.imageButton2);
         final MediaPlayer  mediaPlayer = MediaPlayer.create(Homescreen.this.getContext(),R.raw.yada_yada_hi);
         //drawerLayout = (DrawerLayout)view.findViewById(R.id.drawer_layout);

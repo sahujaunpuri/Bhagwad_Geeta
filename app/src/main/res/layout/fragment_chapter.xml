@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorwhite"
+    android:id="@+id/fragment_chapter"
     tools:context="com.application.aayush.geeta.SettingsFragment">
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
@@ -37,23 +38,20 @@
                 android:layout_height="24dp"
                 android:layout_gravity="end"
                 android:layout_centerVertical="true"
-                android:background="@mipmap/notification"
-                android:layout_alignParentRight="true"
+                android:background="@mipmap/shell"
+                android:layout_alignParentEnd="true"
                 android:layout_width="24dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp" />
-
-            <Button
-                android:viewportHeight="24.0"
-                android:viewportWidth="24.0"
-                android:layout_centerVertical="true"
+            <ImageButton
                 android:id="@+id/button14"
-                android:background="@mipmap/back_arrow_white"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="20dp"
-                android:layout_height="24dp"
-                android:layout_width="24dp"
-                android:layout_alignParentStart="true" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:background="@mipmap/white_arrow_1"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="17dp"/>
+
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
     <TextView
@@ -97,11 +95,11 @@
         android:layout_marginRight="25dp"
         android:layout_marginBottom="75dp">
 
-        <TextView
+        <EditText
             android:text="Yada Yada Hi Dharmasya Glanirva Bhavathi Bharatha,Abhyuthanam Adharmaysya Tadatmanam Srijami Aham"
             android:layout_width="377dp"
             android:layout_height="wrap_content"
-            android:id="@+id/textView39"
+            android:id="@+id/edittext39"
             android:textSize="14sp"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="0dp" />

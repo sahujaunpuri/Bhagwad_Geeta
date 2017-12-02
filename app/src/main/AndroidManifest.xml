@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.application.aayush.geeta">
-
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher1"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+
+        >
+
         <activity android:name="com.application.aayush.geeta.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -15,6 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver android:name=".AlarmReceiver"/>
         <activity android:name="com.application.aayush.geeta.FirstScreen" />
         <activity android:name="com.application.aayush.geeta.SecondScreen" />
         <activity android:name="com.application.aayush.geeta.ThirdScreen" />
@@ -22,12 +26,13 @@
         <activity android:name="com.application.aayush.geeta.MyProfile" />
         <activity android:name="com.application.aayush.geeta.MyRating" />
         <activity android:name="com.application.aayush.geeta.SetReminder" />
-        <activity android:name="com.application.aayush.geeta.Ringtone"></activity>
+        <activity android:name="com.application.aayush.geeta.Ringtone"/>
         
         <activity
             android:name="com.application.aayush.geeta.UserMenu"
             android:label="@string/title_activity_user_menu"
             android:theme="@style/AppTheme"/>
+        <service android:name=".RingtonePlayService" android:enabled="true">        </service>
     </application>
 
 </manifest>

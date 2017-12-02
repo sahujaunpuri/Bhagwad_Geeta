@@ -5,7 +5,7 @@
 
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:icon="@mipmap/notification"
+        android:icon="@mipmap/shell"
         android:title="@string/action_settings"
         app:showAsAction="always" />
 </menu>

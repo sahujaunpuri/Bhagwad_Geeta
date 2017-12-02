@@ -22,20 +22,22 @@
             android:layout_height="50dp">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="50dp"
+                android:layout_marginStart="0dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:id="@+id/toobar_title"
                     android:text="EveryDay Geeta"
-                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
                     android:textColor="@color/colorwhite"
                     android:layout_marginTop="20dp"
-                    android:textSize="22sp"
+                    android:textSize="@dimen/font3"
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="34dp"
-                    />
+                    android:layout_marginStart="24dp"
+                    android:paddingTop="7dp" />
+
             </RelativeLayout>
         </android.support.v7.widget.Toolbar>
 

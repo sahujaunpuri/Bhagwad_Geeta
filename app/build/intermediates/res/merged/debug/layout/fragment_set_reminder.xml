@@ -17,44 +17,31 @@
         android:layout_height="50dp">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="0dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/toobar_title"
-            android:text="Set Reminder"
-            android:layout_alignParentLeft="true"
-            android:textColor="@color/colorwhite"
-            android:layout_marginTop="20dp"
-            android:textSize="22sp"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="64dp"
-            />
-            <Button
-                android:viewportHeight="24.0"
-                android:viewportWidth="24.0"
-                android:layout_centerVertical="true"
-                android:id="@+id/button14"
-                android:background="@mipmap/back_arrow_white"
+            android:layout_height="50dp"
+            android:layout_marginStart="0dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/toobar_title"
+                android:text="Set Reminder"
+                android:layout_alignParentStart="true"
+                android:textColor="@color/colorwhite"
                 android:layout_marginTop="20dp"
-                android:layout_marginStart="20dp"
-                android:layout_height="24dp"
-                android:layout_width="24dp"
-                android:layout_alignParentStart="true" />
-      </RelativeLayout>
+                android:textSize="@dimen/font3"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="64dp"/>
+
+            <ImageButton
+                android:id="@+id/button14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:background="@mipmap/white_arrow_1"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="17dp"/>
+
+        </RelativeLayout>
     </android.support.v7.widget.Toolbar>
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="50dp"
-        android:addStatesFromChildren="false"
-
-
-        android:fillViewport="false"
-        android:clipToPadding="false">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -98,5 +85,4 @@
         android:layout_height="35dp"
         android:layout_marginTop="75dp" />
     </LinearLayout>
-    </ScrollView>
 </RelativeLayout>

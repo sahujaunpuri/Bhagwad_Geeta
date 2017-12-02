@@ -34,7 +34,7 @@ public class ThirdScreen extends AppCompatActivity {
             public void onClick(View v) {
                 try{
                     finish();
-                    startActivity(new Intent(ThirdScreen.this,SignUp.class));
+                    startActivity(new Intent(ThirdScreen.this,MyProfile.class));
                     overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                 }catch (Exception e){
                     e.printStackTrace();
