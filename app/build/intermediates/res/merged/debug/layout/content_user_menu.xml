@@ -10,6 +10,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.application.aayush.geeta.UserMenu"
     tools:showIn="@layout/app_bar_user_menu">
@@ -31,7 +33,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:src="@mipmap/krishnacopy"
+                android:src="@mipmap/home_screenimage"
                 android:id="@+id/imageView9"
                 android:layout_height="355dp"
                 android:layout_marginTop="0dp"
@@ -45,6 +47,7 @@
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/imageButton2"
                 android:adjustViewBounds="true"
+                android:visibility="gone"
                 android:background="@mipmap/music" />
 
             <FrameLayout
@@ -54,7 +57,8 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:background="@drawable/setcorners"
-                android:layout_marginBottom="15dp">
+                android:layout_marginBottom="15dp"
+                android:id="@+id/frame_layout1">
                 <ImageView
                     android:layout_height="wrap_content"
                     app:srcCompat="@mipmap/back_arrow"
@@ -103,11 +107,22 @@
                         android:layout_marginRight="33dp"
                         android:layout_width="320dp" />
                     <TextView
+                        android:text="Shloka"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView51"
+                        android:textSize="@dimen/small_text"
+                        android:layout_below="@+id/view1"
+                        android:layout_marginTop="20dp"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/colorblack"
+                        android:textStyle="bold"/>
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView20"
-                        android:layout_below="@+id/view1"
-                        android:layout_marginTop="20dp"
+                        android:layout_below="@+id/textView51"
+                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="45dp"
                         android:layout_marginRight="45dp"
                         android:textSize="@dimen/small_text"
@@ -219,7 +234,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/textView44"
                         android:textSize="@dimen/ext_small_text"
-                        android:layout_alignStart="@+id/view1"
+                        android:layout_marginStart="15dp"
                         android:layout_below="@+id/view6"
                         android:layout_marginTop="10dp"/>
                     <FrameLayout
@@ -232,25 +247,25 @@
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="7dp"
                         android:background="@color/colorgrey">
-                        <ViewSwitcher
-                            android:id="@+id/view_switcher"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" >
                             <TextView
-                                android:id="@+id/learning_text"
+                                android:id="@+id/diary_no"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:clickable="true"
-                                android:text="What do you learn from today's Chapter..."
-                                android:textSize="@dimen/ext_small_text"
-                                android:visibility="invisible"/>
+                                android:visibility="gone"/>
                             <EditText
                                 android:id="@+id/hidden_edit_view"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:visibility="gone"/>
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="5dp"
+                                android:imeActionLabel="Done"
+                                android:singleLine="true"
+                                android:cursorVisible="true"
+                                android:hint="What do you learn from today's Chapter..."
+                                android:textSize="@dimen/small_text"
+                                />
 
-                        </ViewSwitcher>
+
                     </FrameLayout>
 <Button
     android:layout_width="wrap_content"
@@ -282,14 +297,17 @@
                        android:fitsSystemWindows="true"/>
 
                     <Button
-                        android:text="Save"
+                        android:text="save"
                         android:background="@color/colorMaroon"
                         android:textColor="@color/colorwhite"
                         android:layout_width="50dp"
                         android:layout_height="20dp"
                         android:layout_below="@+id/frame_layout3"
                         android:layout_alignEnd="@+id/frame_layout3"
-                        android:id="@+id/button20" />
+                        android:id="@+id/button20"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:textAllCaps="false"
+                        android:visibility="gone" />
                     <View
                         android:layout_height="1dp"
                         android:background="@android:color/darker_gray"

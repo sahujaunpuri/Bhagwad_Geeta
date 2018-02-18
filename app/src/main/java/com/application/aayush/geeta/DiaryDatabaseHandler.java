@@ -53,6 +53,12 @@ public class DiaryDatabaseHandler extends SQLiteOpenHelper {
         db.insert(TABLE_DIARY,null,values);
         db.close();//closing database connection
     }
+    boolean deleteContent(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        return db.delete(TABLE_DIARY, KEY_CHAPTER_ID + "=" + id, null) > 0;
+    }
     //get a single diary content
     Diary getContent(int id){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -74,7 +80,7 @@ public class DiaryDatabaseHandler extends SQLiteOpenHelper {
         ContentValues values =new ContentValues();
         values.put(KEY_DIARY_DETAIL,diary.getDiary_details());
         //updating row
-        return db.update(TABLE_DIARY,values,KEY_CHAPTER_ID += "?",new String[]{String.valueOf(diary.getChapter_no())});
+        return db.update(TABLE_DIARY,values,KEY_CHAPTER_ID +"=?",new String[]{String.valueOf(diary.getChapter_no())});
     }
     public int contentCount(){
         String countQuery = "SELECT * FROM "+TABLE_DIARY;

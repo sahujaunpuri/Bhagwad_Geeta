@@ -32,6 +32,10 @@
         "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\res\\layout\\design_navigation_item.xml"
     },
     {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_alarm_sounds.xml",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\layout\\layout_alarm_sounds.xml"
+    },
+    {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
         "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\select_dialog_item_material.xml"
     },
@@ -104,6 +108,10 @@
         "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\notification_template_part_chronometer.xml"
     },
     {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_why_geeta.xml",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\layout\\activity_why_geeta.xml"
+    },
+    {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\nav_header_user_menu.xml",
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\layout\\nav_header_user_menu.xml"
     },
@@ -170,6 +178,10 @@
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
         "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\list_single.xml",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\layout\\list_single.xml"
     },
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
@@ -304,12 +316,12 @@
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\layout\\fragment_add_reminder.xml"
     },
     {
-        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_icon.xml",
-        "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\res\\layout\\design_layout_tab_icon.xml"
-    },
-    {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
         "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_icon.xml",
+        "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\res\\layout\\design_layout_tab_icon.xml"
     },
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_user_menu.xml",

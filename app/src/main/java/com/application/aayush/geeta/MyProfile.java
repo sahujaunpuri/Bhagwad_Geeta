@@ -1,6 +1,7 @@
 package com.application.aayush.geeta;
 
 
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +9,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -39,7 +42,8 @@ public class MyProfile extends AppCompatActivity {
     TextInputEditText name_input,mobileNumber_input,email_input,address_input,city_input;
     Bundle bundle;
     public static final String DEFAULT = "N/A";
-
+    int flagValue = 0;
+    boolean loginflag = false;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +60,7 @@ public class MyProfile extends AppCompatActivity {
         address_input = (TextInputEditText) findViewById(R.id.input_address);
         city_input = (TextInputEditText) findViewById(R.id.input_city);
         final SharedPreferences sharedPreferences = getSharedPreferences("UserData", Context.MODE_PRIVATE);
+        final SharedPreferences sharedPreferences1 = getSharedPreferences("app_data", Context.MODE_PRIVATE);
         int count1 = sharedPreferences.getAll().size();
         if(count1 != 0){
             name_input.setText(sharedPreferences.getString("name",DEFAULT));
@@ -75,12 +80,12 @@ public class MyProfile extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Log.d("Insert", "Inserting...");
-                    submitForm(sharedPreferences);
+                    submitForm(sharedPreferences,sharedPreferences1);
                 }
             });
 
     }
-    private void submitForm(SharedPreferences sharedPreferences){
+    private void submitForm(SharedPreferences sharedPreferences,SharedPreferences sharedPreferences1){
         if (!validateName()) {
             return;
         }
@@ -101,6 +106,7 @@ public class MyProfile extends AppCompatActivity {
         String e = email_input.getText().toString().trim();
         String a = address_input.getText().toString().trim();
         String c = city_input.getText().toString().trim();
+        loginflag = true;
         bundle.putString("name",n);
         bundle.putString("mobile_number",m);
         bundle.putString("email",e);
@@ -108,14 +114,18 @@ public class MyProfile extends AppCompatActivity {
         bundle.putString("city",c);
         Log.d("Insert","Inserting...");
         //Toast.makeText(getApplicationContext(),n,Toast.LENGTH_SHORT).show();
-        sharedPreferences = getSharedPreferences("UserData", Context.MODE_PRIVATE);
+//        sharedPreferences = getSharedPreferences("UserData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+        SharedPreferences.Editor editor1 = sharedPreferences1.edit();
         editor.putString("name",n);
         editor.putString("mobile_no",m);
         editor.putString("email_id",e);
         editor.putString("address",a);
         editor.putString("city",c);
+        editor.putInt("flag",flagValue);
+        editor1.putBoolean("login_flag",loginflag);
         editor.apply();
+        editor1.apply();
 //        db.addUser(new UserProfile(n,m,e,a,c));
                     Intent intent = new Intent(MyProfile.this,UserMenu.class);
                     intent.putExtra("user_name",n);
@@ -123,7 +133,17 @@ public class MyProfile extends AppCompatActivity {
                     intent.putExtra("user_email",e);
                     intent.putExtra("user_address",a);
                     intent.putExtra("user_city",c);
+        // Use TaskStackBuilder to build the back stack and get the PendingIntent
+        TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(MyProfile.this);
+        // add all of DetailsActivity's parents to the stack,
+        // followed by DetailsActivity itself
+
+        taskStackBuilder.addNextIntentWithParentStack(intent);
+        PendingIntent pendingIntent = taskStackBuilder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        builder.setContentIntent(pendingIntent);
         startActivity(intent);
+
     }
 
 

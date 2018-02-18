@@ -19,7 +19,7 @@ public class DiaryViewHolder extends RecyclerView.ViewHolder {
     public DiaryViewHolder(View itemView) {
      super(itemView);
      spinner = (Spinner)itemView.findViewById(R.id.spinner3);
-     textView1 = (TextView)itemView.findViewById(R.id.textView34);
+     textView1 = (TextView)itemView.findViewById(R.id.textView36);
      textView2 = (TextView)itemView.findViewById(R.id.textView35);
      save = (ImageView)itemView.findViewById(R.id.imageView10);
      delete = (ImageView)itemView.findViewById(R.id.imageView11);

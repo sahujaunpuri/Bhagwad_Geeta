@@ -16,6 +16,10 @@
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\arrow_new.png"
     },
     {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\krishna_roundimage.png",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\krishna_roundimage.png"
+    },
+    {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\ic_launcher1.png",
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher1.png"
     },
@@ -40,6 +44,10 @@
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\delete1.png"
     },
     {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\home_screenimage.png",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\home_screenimage.png"
+    },
+    {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\reminder.png",
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\reminder.png"
     },
@@ -54,6 +62,10 @@
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\intro_assets.png",
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\intro_assets.png"
+    },
+    {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\menu3.png",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\menu3.png"
     },
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\home.png",
@@ -132,6 +144,10 @@
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\design.png"
     },
     {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\round_image.png",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\round_image.png"
+    },
+    {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\google.png",
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\google.png"
     },
@@ -154,6 +170,10 @@
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\settings.png",
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\settings.png"
+    },
+    {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\app_icon.png",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\app_icon.png"
     },
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\logo.png",
@@ -180,12 +200,12 @@
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\google_icon.png"
     },
     {
-        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\chakra_2.png",
-        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\chakra_2.png"
-    },
-    {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\bird.png",
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\bird.png"
+    },
+    {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\chakra_2.png",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\chakra_2.png"
     },
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\down_arrow.png",

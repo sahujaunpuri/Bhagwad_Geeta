@@ -27,7 +27,7 @@ import java.util.Calendar;
  */
 /*public class SetReminder extends Fragment {*/
 public class SetReminder extends AppCompatActivity{
-    Button addReminder;
+    Button addReminder,cancel;
     ImageButton back;
     Toolbar toolbar;
     Bundle bundle;
@@ -47,7 +47,7 @@ public class SetReminder extends AppCompatActivity{
         address = getIntent().getStringExtra("user_address");
         city = getIntent().getStringExtra("user_city");
         back = (ImageButton) findViewById(R.id.button14);
-        Toast.makeText(getApplicationContext(),name+" "+mobile_number+" ",Toast.LENGTH_SHORT).show();
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,6 +61,19 @@ public class SetReminder extends AppCompatActivity{
             }
         });
         addReminder = (Button)findViewById(R.id.button8);
+        cancel = (Button)findViewById(R.id.button9);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),UserMenu.class);
+                intent.putExtra("user_name",name);
+                intent.putExtra("user_mobilenumber",mobile_number);
+                intent.putExtra("user_email",email);
+                intent.putExtra("user_address",address);
+                intent.putExtra("user_city",city);
+                startActivity(intent);
+            }
+        });
         addReminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

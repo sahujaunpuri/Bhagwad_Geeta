@@ -54,6 +54,7 @@
 
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
+<!--
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -217,7 +218,17 @@
             android:paddingTop="10dp" />
 
     </FrameLayout>
+-->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/my_toolbar">
 
+        </android.support.v7.widget.RecyclerView>
     <android.support.design.widget.FloatingActionButton
         android:clickable="true"
         app:fabSize="mini"

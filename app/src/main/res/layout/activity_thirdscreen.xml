@@ -25,7 +25,7 @@
             android:paddingBottom="30dp" />
     </LinearLayout>
     <TextView
-        android:text="Heading 3"
+        android:text="Heading 1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"

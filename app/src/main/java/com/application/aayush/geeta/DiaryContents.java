@@ -5,6 +5,6 @@ package com.application.aayush.geeta;
  */
 
 public class DiaryContents {
-    protected int chapter_no;
-    protected String chapter_content;
+
+    protected String chapter_content,chapter_no;
 }

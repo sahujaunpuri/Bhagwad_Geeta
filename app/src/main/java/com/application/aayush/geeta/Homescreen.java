@@ -74,7 +74,7 @@ public class Homescreen extends Fragment {
 
         notify = (Button) view.findViewById(R.id.notification_button1);
         play_music = (Button)view.findViewById(R.id.imageButton2);
-        final MediaPlayer  mediaPlayer = MediaPlayer.create(Homescreen.this.getContext(),R.raw.yada_yada_hi);
+     //   final MediaPlayer  mediaPlayer = MediaPlayer.create(Homescreen.this.getContext(),R.raw.bgita);
         //drawerLayout = (DrawerLayout)view.findViewById(R.id.drawer_layout);
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +112,7 @@ public class Homescreen extends Fragment {
 
             }
         });
-        play_music.setOnClickListener(new View.OnClickListener() {
+       /* play_music.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(mediaPlayer.isPlaying()==true){
@@ -120,11 +120,11 @@ public class Homescreen extends Fragment {
                 }
                 else
                 mediaPlayer.start();
-                /*Uri uri = Uri.parse("android.resource://com.application.aayush.geeta/raw/yada_yad_hi");
+                *//*Uri uri = Uri.parse("android.resource://com.application.aayush.geeta/raw/yada_yad_hi");
                 Intent intent = new Intent(Intent.ACTION_VIEW,uri);
-                startActivity(intent);*/
+                startActivity(intent);*//*
             }
-        });
+        });*/
         return view;
     }
 

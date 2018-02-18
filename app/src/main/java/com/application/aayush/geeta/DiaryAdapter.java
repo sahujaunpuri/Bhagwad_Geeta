@@ -1,67 +1,97 @@
 package com.application.aayush.geeta;
 
 import android.content.Context;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by Aayush on 11/12/2017.
+ * Created by Aayush on 12/10/2017.
  */
 
-public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryHolder> {
-    private List<DiaryContents> diaryContentsList;
+public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryViewHolder>{
     private LayoutInflater layoutInflater;
-    CardView cardView;
-    RelativeLayout layout;
+    private OnItemClickListener mListener;
+    public interface OnItemClickListener{
+        void onItemClick(int position);
+        void onEditOnClick(int position);
+        void onDeleteOnClick(int position,List<DiaryContents> contentsList);
+    }
+    public void setOnItemClickListener(OnItemClickListener listener){
+        mListener = listener;
+    }
 
-    public DiaryAdapter(List<DiaryContents> diaryContentsList) {
-        this.diaryContentsList = diaryContentsList;
+    List<DiaryContents> contentsList = Collections.emptyList();
+    public DiaryAdapter(Context context,List<DiaryContents> contentsList) {
+        layoutInflater = LayoutInflater.from(context);
+        this.contentsList = contentsList;
     }
 
     @Override
-    public DiaryHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.diary_repeat_layout,parent,false);
-        cardView = (CardView)itemView.findViewById(R.id.cardView2);
-        layout = (RelativeLayout)itemView.findViewById(R.id.diary);
-
-        return null;
+    public DiaryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = layoutInflater.inflate(R.layout.diary_repeat_layout,parent,false);
+        DiaryViewHolder diaryViewHolder =  new DiaryViewHolder(view,mListener);
+        return diaryViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(DiaryHolder holder, int position) {
-        DiaryContents diaryContents = diaryContentsList.get(position);
-        holder.textView1.setText(diaryContents.chapter_content);
+    public void onBindViewHolder(DiaryViewHolder holder, int position) {
+        DiaryContents current = contentsList.get(position);
+        holder.chapter_no.setText(current.chapter_no);
+        holder.chapter_content.setText(current.chapter_content);
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return contentsList.size();
     }
-    public static class DiaryHolder extends RecyclerView.ViewHolder{
+    class DiaryViewHolder extends RecyclerView.ViewHolder{
+        TextView chapter_no,chapter_content;
+        ImageView edit,delete,share;
         Spinner spinner;
-        TextView textView1,textView2;
-        ImageView save,delete,share;
-
-        public DiaryHolder(View itemView) {
+        String temp,temp1;
+        public DiaryViewHolder(View itemView, final OnItemClickListener listener) {
             super(itemView);
-            spinner = (Spinner)itemView.findViewById(R.id.spinner3);
-            textView1 = (TextView)itemView.findViewById(R.id.textView34);
-            textView2 = (TextView)itemView.findViewById(R.id.textView35);
-            save = (ImageView)itemView.findViewById(R.id.imageView10);
+            chapter_no = (TextView)itemView.findViewById(R.id.textView36);
+            chapter_content = (TextView)itemView.findViewById(R.id.textView35);
+            edit = (ImageView)itemView.findViewById(R.id.imageView10);
             delete = (ImageView)itemView.findViewById(R.id.imageView11);
             share = (ImageView)itemView.findViewById(R.id.imageView12);
+            spinner = (Spinner) itemView.findViewById(R.id.spinner3);
+            temp = chapter_no.getText().toString();
+            temp1 = chapter_content.getText().toString();
+            edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener !=null){
+                        int position  = getAdapterPosition();
+                        //long id = getItemId(position);
+                            if (position != RecyclerView.NO_POSITION){
+                            listener.onEditOnClick(position);
+                        }
+                    }
+                }
+            });
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener !=null){
+                        int position  = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION){
+                            listener.onDeleteOnClick(position,contentsList);
+                        }
+                    }
+                }
+            });
         }
     }
 }

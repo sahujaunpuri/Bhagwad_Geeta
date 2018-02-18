@@ -24,6 +24,7 @@ public class TermsConditionsFragment extends Fragment {
     Toolbar toolbar;
     ImageButton back;
     String name,mobile_number,email,address,city;
+    Button ok ;
     public TermsConditionsFragment() {
         // Required empty public constructor
     }
@@ -41,6 +42,7 @@ public class TermsConditionsFragment extends Fragment {
         email = getArguments().getString("user_email");
         address = getArguments().getString("user_address");
         city = getArguments().getString("user_city");
+        ok = (Button)view.findViewById(R.id.button10);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +56,18 @@ public class TermsConditionsFragment extends Fragment {
 
             }
         });
-
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),UserMenu.class);
+                intent.putExtra("user_name",name);
+                intent.putExtra("user_mobilenumber",mobile_number);
+                intent.putExtra("user_email",email);
+                intent.putExtra("user_address",address);
+                intent.putExtra("user_city",city);
+                startActivity(intent);
+            }
+        });
         text1 = (TextView)view.findViewById(R.id.textView22);
         text2= (TextView)view.findViewById(R.id.textView33);
         Typeface customFont = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Lato-Regular.ttf");

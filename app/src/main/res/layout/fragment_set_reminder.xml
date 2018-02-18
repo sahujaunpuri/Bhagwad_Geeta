@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/setReminder"
+    android:background="@color/backgroundcolor1"
     tools:context="com.application.aayush.geeta.SetReminder">
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
@@ -50,39 +51,71 @@
         android:orientation="vertical">
         <ImageView
             android:layout_width="200dp"
-            android:src="@mipmap/set_alarm"
+            android:src="@mipmap/round_image"
             android:id="@+id/imageView7"
             android:layout_height="200dp"
             android:adjustViewBounds="true"
             android:layout_marginTop="115dp"
             android:layout_gravity="center_horizontal"/>
         <TextView
-            android:text="Need a reminder for reading"
+            android:text="Start your day by reading Bhagwad Geeta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView25"
             android:textSize="22sp"
-            android:textColor="@color/colorMaroon"
+            android:textColor="@color/colorwhite"
+            android:layout_marginStart="75dp"
+            android:layout_marginTop="30dp" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:srcCompat="@mipmap/design"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp" />
+            android:layout_marginTop="30dp"
+            android:id="@+id/imageView2"
+            android:tint="@color/colorwhite"/>
+
         <TextView
-            android:text="Add a reminder to read"
+            android:text="---------------------------"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView26"
-            android:textSize="18sp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp" />
+            android:textColor="@color/colorwhite"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="-24dp" />
+        <TextView
+            android:text="---------------------------"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView27"
+            android:textColor="@color/colorwhite"
+            android:layout_marginEnd="50dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="-21dp" />
 
     <Button
-        android:text="Add Reminder"
+        android:text="Start Reading Geeta"
         android:layout_width="230dp"
         android:id="@+id/button8"
-        android:background="@color/backgroundcolor1"
-        android:textColor="@color/colorwhite"
-        android:layout_marginBottom="37dp"
+        android:background="@color/colorwhite"
+        android:textColor="@color/backgroundcolor1"
+        android:layout_marginBottom="15dp"
         android:layout_gravity="center_horizontal"
         android:layout_height="35dp"
-        android:layout_marginTop="75dp" />
+        android:layout_marginTop="30dp"
+        android:textStyle="normal"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:textAllCaps="false" />
+        <Button
+            android:text="Cancel"
+            android:layout_width="230dp"
+            android:id="@+id/button9"
+            android:textColor="@color/colorwhite"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="35dp"
+            android:textStyle="normal"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:textAllCaps="false" />
     </LinearLayout>
 </RelativeLayout>

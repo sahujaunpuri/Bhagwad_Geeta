@@ -2,6 +2,7 @@ package com.application.aayush.geeta;
 
 import android.app.Service;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -11,14 +12,21 @@ import android.util.Log;
  */
 
 public class RingtonePlayService extends Service {
-    @Nullable
+    MediaPlayer mediaPlayer;
     @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
-    public int onStartCommand(Intent intent){
+    public int onStartCommand(Intent intent,int flags,int startid){
 
-        Log.e("In Start Command","On Start Service");
+        Log.e("Local Service","Received start id"+startid+":"+intent);
+
         return START_NOT_STICKY;
+    }
+
+    @Override
+    public void onDestroy() {
+
+        super.onDestroy();
     }
 }
