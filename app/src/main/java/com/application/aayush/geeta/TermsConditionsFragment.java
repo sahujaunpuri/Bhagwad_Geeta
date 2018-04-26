@@ -46,26 +46,15 @@ public class TermsConditionsFragment extends Fragment {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),UserMenu.class);
-                intent.putExtra("user_name",name);
-                intent.putExtra("user_mobilenumber",mobile_number);
-                intent.putExtra("user_email",email);
-                intent.putExtra("user_address",address);
-                intent.putExtra("user_city",city);
-                startActivity(intent);
+                ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+                getActivity().onBackPressed();
 
             }
         });
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),UserMenu.class);
-                intent.putExtra("user_name",name);
-                intent.putExtra("user_mobilenumber",mobile_number);
-                intent.putExtra("user_email",email);
-                intent.putExtra("user_address",address);
-                intent.putExtra("user_city",city);
-                startActivity(intent);
+                getActivity().onBackPressed();
             }
         });
         text1 = (TextView)view.findViewById(R.id.textView22);
@@ -86,5 +75,11 @@ public class TermsConditionsFragment extends Fragment {
                 "Let us read the Geetha together and interpret it with the knowledge of our ever changing world. Let us find ourselves victorious over our inner evil. The most beautiful part of this victory is that everyone can win.\n");
         text2.setTextColor(getResources().getColor(R.color.colorblack));
         return view;
+    }
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+
     }
 }

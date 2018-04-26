@@ -10,6 +10,7 @@ public class Shlokas {
     String verse_translation;
     String verse_purpose;
     int chapter_id;
+    boolean access_flag;
 
     public int getChapter_id() {
         return chapter_id;
@@ -47,11 +48,30 @@ public class Shlokas {
         this.verse_purpose = verse_purpose;
     }
 
+    public Shlokas(String verse_details, String verse_translation, String verse_purpose,boolean access_flag) {
+        this.verse_details = verse_details;
+        this.verse_translation = verse_translation;
+        this.verse_purpose = verse_purpose;
+        this.access_flag = access_flag;
+    }
+    public Shlokas(int id,boolean access_flag) {
+        this.id = id;
+        this.access_flag = access_flag;
+    }
+
+    public Shlokas(int id,int chapter_id,boolean access_flag) {
+        this.id = id;
+        this.chapter_id = chapter_id;
+        this.access_flag = access_flag;
+    }
 
     public int getId() {
         return id;
     }
 
+    public boolean getAccess_flag() {
+        return access_flag;
+    }
     public String getVerse_details() {
         return verse_details;
     }
@@ -81,4 +101,9 @@ public class Shlokas {
     public void setVerse_purpose(String verse_purpose) {
         this.verse_purpose = verse_purpose;
     }
+
+    public void setAccess_flag(boolean access_flag) {
+        this.access_flag = access_flag;
+    }
+
 }

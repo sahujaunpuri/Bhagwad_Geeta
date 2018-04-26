@@ -100,6 +100,10 @@
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\share_it.png"
     },
     {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\whatsapp.png",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\whatsapp.png"
+    },
+    {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\diary.png",
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\diary.png"
     },

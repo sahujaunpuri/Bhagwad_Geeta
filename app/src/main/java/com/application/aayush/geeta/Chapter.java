@@ -71,24 +71,22 @@ public class Chapter extends Fragment {
         notification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NotificationFragment notificationFragment = new NotificationFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                notificationFragment.setArguments(bundle);
-                fragmentManager.beginTransaction().replace(R.id.fragment_chapter,notificationFragment,notificationFragment.getTag()).commit();
-
-            }
-        });
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),UserMenu.class);
+                Intent intent = new Intent(getActivity(),NotificationActivity.class);
                 intent.putExtra("user_name",name);
                 intent.putExtra("user_mobilenumber",mobile_number);
                 intent.putExtra("user_email",email);
                 intent.putExtra("user_address",address);
                 intent.putExtra("user_city",city);
                 startActivity(intent);
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+                getActivity().onBackPressed();
+
             }
         });
 
@@ -104,7 +102,7 @@ public class Chapter extends Fragment {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                getActivity().onBackPressed();
             }
         });
         return view;
@@ -122,5 +120,11 @@ public class Chapter extends Fragment {
             Log.d("Diary Entry :",log);
         }
         Toast.makeText(Chapter.this.getContext(),"Updated",Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+
     }
 }

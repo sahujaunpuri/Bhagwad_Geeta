@@ -12,8 +12,8 @@
         "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\abc_dialog_title_material.xml"
     },
     {
-        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_homescreen.xml",
-        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\layout\\fragment_homescreen.xml"
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\messenger_button_send_white_large.xml",
+        "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.0.0\\res\\layout\\messenger_button_send_white_large.xml"
     },
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
@@ -44,12 +44,12 @@
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\layout\\diary_repeat_layout.xml"
     },
     {
-        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
-        "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\abc_popup_menu_header_item_layout.xml"
-    },
-    {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
         "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\res\\layout\\design_layout_tab_text.xml"
+    },
+    {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
+        "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\abc_popup_menu_header_item_layout.xml"
     },
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_narrow.xml",
@@ -92,8 +92,8 @@
         "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\abc_popup_menu_item_layout.xml"
     },
     {
-        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_settings.xml",
-        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\layout\\fragment_settings.xml"
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_login_fragment.xml",
+        "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.0.0\\res\\layout\\com_facebook_login_fragment.xml"
     },
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_setreminder.xml",
@@ -140,6 +140,10 @@
         "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\abc_search_view.xml"
     },
     {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\messenger_button_send_blue_small.xml",
+        "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.0.0\\res\\layout\\messenger_button_send_blue_small.xml"
+    },
+    {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
         "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\abc_list_menu_item_checkbox.xml"
     },
@@ -160,8 +164,24 @@
         "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\abc_list_menu_item_layout.xml"
     },
     {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\messenger_button_send_white_small.xml",
+        "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.0.0\\res\\layout\\messenger_button_send_white_small.xml"
+    },
+    {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_facebook.xml",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\layout\\activity_facebook.xml"
+    },
+    {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\share_it.xml",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\layout\\share_it.xml"
+    },
+    {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
         "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_notification.xml",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\layout\\activity_notification.xml"
     },
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
@@ -188,12 +208,20 @@
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_tooltip_bubble.xml",
+        "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.0.0\\res\\layout\\com_facebook_tooltip_bubble.xml"
+    },
+    {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_firstscreen.xml",
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\layout\\activity_firstscreen.xml"
     },
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
         "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\res\\layout\\design_layout_snackbar.xml"
+    },
+    {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_activity_layout.xml",
+        "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.0.0\\res\\layout\\com_facebook_activity_layout.xml"
     },
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_rating.xml",
@@ -212,6 +240,10 @@
         "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\res\\layout\\design_navigation_item_header.xml"
     },
     {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\messenger_button_send_blue_large.xml",
+        "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.0.0\\res\\layout\\messenger_button_send_blue_large.xml"
+    },
+    {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
         "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\res\\layout\\design_menu_item_action_area.xml"
     },
@@ -226,10 +258,6 @@
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_chapter.xml",
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\layout\\fragment_chapter.xml"
-    },
-    {
-        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_notification.xml",
-        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\layout\\fragment_notification.xml"
     },
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
@@ -248,6 +276,10 @@
         "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\abc_action_bar_title_item.xml"
     },
     {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_settings.xml",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\layout\\activity_settings.xml"
+    },
+    {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
         "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\abc_action_mode_close_item_material.xml"
     },
@@ -258,6 +290,14 @@
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
         "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_user_profile.xml",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\layout\\activity_user_profile.xml"
+    },
+    {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\messenger_button_send_blue_round.xml",
+        "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.0.0\\res\\layout\\messenger_button_send_blue_round.xml"
     },
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
@@ -274,6 +314,10 @@
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
         "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\res\\layout\\design_navigation_item_subheader.xml"
+    },
+    {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\messenger_button_send_white_round.xml",
+        "source": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.0.0\\res\\layout\\messenger_button_send_white_round.xml"
     },
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_diary.xml",

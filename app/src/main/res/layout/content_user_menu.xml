@@ -72,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/textView13"
                     android:layout_marginTop="13dp"
-                    android:layout_marginStart="46dp"
+                    android:layout_gravity="center_horizontal"
                     android:textSize="@dimen/small_text"
                     android:textColor="@color/colorblack" />
                <TextView
@@ -81,15 +81,18 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/textView14"
                     android:layout_marginTop="13dp"
-                    android:layout_marginStart="93dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_gravity="center_horizontal"
                     android:textSize="@dimen/small_text"
-                    android:textColor="@color/colorblack" />
+                    android:textColor="@color/colorblack"
+                   android:textStyle="normal|bold" />
 
                 <ImageView
                     android:layout_height="wrap_content"
                     app:srcCompat="@mipmap/arrow_new"
                     android:id="@+id/imageView21"
-                    android:layout_marginStart="108dp"
+                    android:layout_gravity="right"
+                    android:layout_marginEnd="13dp"
                     android:layout_marginTop="13dp"
                     android:layout_width="20dp" />
 

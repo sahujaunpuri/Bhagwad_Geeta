@@ -48,6 +48,7 @@ public class MyProfile extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
         bundle = new Bundle();
         name = (TextInputLayout) findViewById(R.id.input_name_wrapper);
         mobileNumber = (TextInputLayout) findViewById(R.id.input_mobile_wrapper);
@@ -116,32 +117,23 @@ public class MyProfile extends AppCompatActivity {
         //Toast.makeText(getApplicationContext(),n,Toast.LENGTH_SHORT).show();
 //        sharedPreferences = getSharedPreferences("UserData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        SharedPreferences.Editor editor1 = sharedPreferences1.edit();
+        //SharedPreferences.Editor editor1 = sharedPreferences1.edit();
         editor.putString("name",n);
         editor.putString("mobile_no",m);
         editor.putString("email_id",e);
         editor.putString("address",a);
         editor.putString("city",c);
         editor.putInt("flag",flagValue);
-        editor1.putBoolean("login_flag",loginflag);
+//        editor1.putBoolean("login_flag",loginflag);
         editor.apply();
-        editor1.apply();
-//        db.addUser(new UserProfile(n,m,e,a,c));
-                    Intent intent = new Intent(MyProfile.this,UserMenu.class);
-                    intent.putExtra("user_name",n);
-                    intent.putExtra("user_mobilenumber",m);
-                    intent.putExtra("user_email",e);
-                    intent.putExtra("user_address",a);
-                    intent.putExtra("user_city",c);
-        // Use TaskStackBuilder to build the back stack and get the PendingIntent
-        TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(MyProfile.this);
-        // add all of DetailsActivity's parents to the stack,
-        // followed by DetailsActivity itself
-
+        //editor1.apply();
+        Intent intent = new Intent(MyProfile.this,SignUp.class);
+        /*TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(MyProfile.this);
         taskStackBuilder.addNextIntentWithParentStack(intent);
         PendingIntent pendingIntent = taskStackBuilder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
-        builder.setContentIntent(pendingIntent);
+        builder.setContentIntent(pendingIntent);*/
+     //   finish();
         startActivity(intent);
 
     }

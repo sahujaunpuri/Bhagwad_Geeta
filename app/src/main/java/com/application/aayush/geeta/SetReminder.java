@@ -51,13 +51,7 @@ public class SetReminder extends AppCompatActivity{
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),UserMenu.class);
-                intent.putExtra("user_name",name);
-                intent.putExtra("user_mobilenumber",mobile_number);
-                intent.putExtra("user_email",email);
-                intent.putExtra("user_address",address);
-                intent.putExtra("user_city",city);
-                startActivity(intent);
+                SetReminder.super.onBackPressed();
             }
         });
         addReminder = (Button)findViewById(R.id.button8);
@@ -123,4 +117,5 @@ public class SetReminder extends AppCompatActivity{
         });
 
     }
+
 }

@@ -84,11 +84,18 @@ public class diaryFragment extends Fragment {
                 TextView chapter_no1 = (TextView) view.findViewById(R.id.textView36);
                 TextView chapter_content1 = (TextView)view.findViewById(R.id.textView35);
                 Chapter chapter1 = new Chapter();
-                FragmentManager fragmentManager1 = getActivity().getSupportFragmentManager();
+                FragmentManager fragmentManager1 = getChildFragmentManager();
                 bundle.putString("chapter_no",chapter_no1.getText().toString());
                 bundle.putString("diary_data",chapter_content1.getText().toString());
                 chapter1.setArguments(bundle);
-                fragmentManager1.beginTransaction().replace(R.id.diary_layout,chapter1,chapter1.getTag()).commit();
+               if (fragmentManager1.getBackStackEntryCount() > 0) {
+                   fragmentManager1.popBackStack();}
+
+                fragmentManager1
+                        .beginTransaction()
+                        .addToBackStack(chapter1.getTag())
+                        .replace(R.id.diary_layout,chapter1,chapter1.getTag())
+                        .commit();
 
             }
 
@@ -114,14 +121,9 @@ public class diaryFragment extends Fragment {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* Intent intent = new Intent(getActivity(),UserMenu.class);
-                intent.putExtra("user_name",name);
-                intent.putExtra("user_mobilenumber",mobile_number);
-                intent.putExtra("user_email",email);
-                intent.putExtra("user_address",address);
-                intent.putExtra("user_city",city);
-                startActivity(intent);*/
+                ((AppCompatActivity) getActivity()).getSupportActionBar().show();
 
+                getActivity().onBackPressed();
 
             }
         });
@@ -137,11 +139,14 @@ public class diaryFragment extends Fragment {
         notify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NotificationFragment notificationFragment = new NotificationFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                notificationFragment.setArguments(bundle);
-                fragmentManager.beginTransaction().replace(R.id.diary_layout,notificationFragment,notificationFragment.getTag()).commit();
 
+                Intent intent = new Intent(getActivity(),NotificationActivity.class);
+                intent.putExtra("user_name",name);
+                intent.putExtra("user_mobilenumber",mobile_number);
+                intent.putExtra("user_email",email);
+                intent.putExtra("user_address",address);
+                intent.putExtra("user_city",city);
+                startActivity(intent);
             }
         });
 
@@ -170,5 +175,9 @@ public class diaryFragment extends Fragment {
       /*  Toast.makeText(diaryFragment.this.getContext(),String.valueOf(diaryDatabaseHandler.contentCount()),Toast.LENGTH_SHORT).show();*/
         return list;
     }
-
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+    }
 }

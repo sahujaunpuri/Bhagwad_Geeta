@@ -12,5 +12,8 @@
     <color name="textcolor">#808080</color>
     <color name="textcolor1">#721d26</color>
     <color name="brown">#542a0c</color>
-    <color name="chakracolor">#DAA520</color>
+    <color name="chakra_clicked">#af630a</color>
+    <color name="svg_iconcolor">#ffffff</color>
+    <color name="test">#b5b9cc</color>
+    <color name="colorgreen">#7CFC00</color>
 </resources>

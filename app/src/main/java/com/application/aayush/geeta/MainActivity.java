@@ -31,13 +31,15 @@ import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
 TextView textView1,textView2;
-    boolean flag = false;
+    boolean flag = false,login_flag = false;
     DataBaseHandlerShloka db;
     DatabaseHandler user;
     int count = 0;
     SQLiteDatabase db1;
     public static final String DEFAULT = "N/A";
     public static final boolean DEFAULT1 = false;
+    public static final boolean default_value = false;
+
     Bundle bundle;
     SharedPreferences sharedPreferences;
     @Override
@@ -96,13 +98,26 @@ TextView textView1,textView2;
                // user.deleteUser(new UserProfile(0,"","","","",""));
                 int count = user.userCount();
                 SharedPreferences sharedPreferences1 = getSharedPreferences("UserData", Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences = getSharedPreferences("app_data", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                login_flag = sharedPreferences.getBoolean("login_flag",default_value);
                 int count1 = sharedPreferences1.getAll().size();
-                if(count1 == 0  ){
+                if( count1 == 0 && !login_flag ){
                 //          startActivity(new Intent(MainActivity.this, FirstScreen.class));
                     startActivity(new Intent(MainActivity.this, ThirdScreen.class));
                 }
-                else {
-                    System.out.println("count="+count1);
+                else if ( count1 != 0 && !login_flag ){
+                    Intent intent = new Intent(MainActivity.this,MyProfile.class);
+                    intent.putExtra("user_name",sharedPreferences1.getString("name",DEFAULT));
+                    intent.putExtra("user_mobilenumber",sharedPreferences1.getString("mobile_no",DEFAULT));
+                    intent.putExtra("user_email",sharedPreferences1.getString("email_id",DEFAULT));
+                    intent.putExtra("user_address",sharedPreferences1.getString("address",DEFAULT));
+                    intent.putExtra("user_city",sharedPreferences1.getString("city",DEFAULT));
+                    startActivity(intent);
+
+                }
+                else if ( count1 != 0 && login_flag ){
+//                    System.out.println("count="+count1);
                     Intent intent = new Intent(MainActivity.this,UserMenu.class);
                     intent.putExtra("user_name",sharedPreferences1.getString("name",DEFAULT));
                     intent.putExtra("user_mobilenumber",sharedPreferences1.getString("mobile_no",DEFAULT));
@@ -116,30 +131,4 @@ TextView textView1,textView2;
         }, 3000);
 
     }
-  /* protected void readData() throws IOException, JSONException {
-        InputStream inputStream = getAssets().open("shloka_details.json");
-        Scanner sc = new Scanner(inputStream);
-        StringBuilder builder = new StringBuilder();
-        while(sc.hasNextLine()){
-            builder.append(sc.nextLine());
-        }
-        parseJSON(builder.toString());
-    }
-    private void parseJSON(String s ) throws JSONException {
-        String string1="",string2="",string3="" ;
-
-        JSONObject root = new JSONObject(s);
-        JSONObject shloka = root.getJSONObject("Geeta_Shlokas");//define array
-        JSONArray items = shloka.getJSONArray("shlokas");
-        for(int i = 0;i<items.length();i++){
-            JSONObject item = items.getJSONObject(i);
-            System.out.print(items.length());
-            string1 = item.getString("verse");
-            string2 = item.getString("translation");
-            string3 = item.getString("purpose");
-            DataBaseHandlerShloka db = new DataBaseHandlerShloka(this);
-            db.addShloka(new Shlokas(string1,string2,string3));
-
-        }
-    }
-  */  }
+  }

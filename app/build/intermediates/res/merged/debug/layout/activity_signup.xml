@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
     <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
@@ -65,14 +67,33 @@
                 android:layout_width="40dp" />
         </RelativeLayout>
 
-    <Button
+   <!-- <Button
         android:layout_marginTop="30dp"
         android:id="@+id/button2"
         android:background="@mipmap/google"
         android:layout_gravity="center_horizontal"
         android:layout_height="30dp"
-        android:layout_width="160dp" />
+        android:layout_width="160dp" />-->
 
+         <!--   <com.google.android.gms.common.SignInButton
+
+                android:id="@+id/button2"
+
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+
+                android:visibility="visible"
+
+                tools:visibility="gone" />-->
+
+                   <!--  <com.google.android.google.common.SignInButton
+                         android:id="@+id/button2"
+                         android:layout_width="160dp"
+                         android:layout_marginTop="30dp"
+                         android:layout_height="wrap_content"
+                         android:layout_gravity="center_horizontal" />
+-->
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -99,14 +120,15 @@
                     android:layout_marginEnd="130dp"
                     android:layout_width="20dp" />
 </RelativeLayout>
-    <Button
+    <com.facebook.login.widget.LoginButton
+        xmlns:fb="http://schemas.android.com/apk/res-auto"
         android:id="@+id/button4"
-        android:background="@mipmap/facebook"
+        fb:login_text=""
+        fb:logout_text=""
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:layout_height="30dp"
         android:layout_width="160dp" />
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

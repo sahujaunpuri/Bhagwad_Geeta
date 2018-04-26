@@ -11,8 +11,10 @@
     <string name="Google"> G+&#32;|&#32;Sign in with Google</string>
     <string name="facebook"> f&#32;|&#32;Sign in with Facebook</string>
     <integer name="splash_screen_duration">6000</integer>
-
-
+    <string name="profile_title">My Profile</string>
+    <string name="facebook_app_id">227814361116750</string>
+    <string name="share">Share</string>
+    <string name="whats_app">Whatsapp Invite</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_sign_up">SignUp</string>
