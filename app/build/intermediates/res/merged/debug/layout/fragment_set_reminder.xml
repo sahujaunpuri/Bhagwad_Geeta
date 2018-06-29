@@ -107,7 +107,7 @@
         android:textStyle="normal"
         style="@style/Widget.AppCompat.Button.Colored"
         android:textAllCaps="false" />
-        <Button
+        <!--<Button
             android:text="Cancel"
             android:layout_width="230dp"
             android:id="@+id/button9"
@@ -116,6 +116,6 @@
             android:layout_height="35dp"
             android:textStyle="normal"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:textAllCaps="false" />
+            android:textAllCaps="false" />-->
     </LinearLayout>
 </RelativeLayout>

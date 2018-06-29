@@ -5,17 +5,14 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInstaller;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.PersistableBundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
@@ -23,7 +20,6 @@ import android.text.InputType;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -52,6 +48,17 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 import com.facebook.login.LoginManager;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -64,35 +71,36 @@ import java.util.Locale;
 import static java.lang.System.out;
 
 public class UserMenu extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-    TextView chapter,header,header2,header3,header4,textView1,textView2,textView3,diary_no,name;
+        implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
+    public static final String default_value = "12";
+    TextView chapter,header,header2,header3,header4,textView1,textView2,textView3,diary_no,name,note;
     Button edit,notify,dismiss,submit;
-    String uname,umobilenumber,uemail,uaddress,ucity;
-    EditText editText;
-    Button play_music,save;
-    ImageView rate1,rate2,rate3,rate4,rate5;
+    String uname,umobilenumber,uemail,uaddress,ucity ,verse,translation,purport,title,diary_entry,font_size = "" , default_chapter = "1",formattedDate = "";
+    int id = 0,count = 0,chapter_no = 0,chapter_id = 0,flag ,defaultValue = 2,count1 = 0,ret = 0 , access_flag = 0 , read_flag = 0;
+    boolean clicked = false,date_flag = false,loginflag = true;
+    TextView editText;
+    Button play_music,read;
+    ImageView rate1,rate2,rate3,rate4,rate5,back,front;
     Bundle bundle;
-    String verse,translation,purport,title,diary_entry;
-    ImageView back,front;
-    int id = 0,count = 0,chapter_no = 0,chapter_id = 0;
-    boolean access_flag = false;
     DiaryDatabaseHandler diaryDatabaseHandler;
     SharedPreferences sharedPreferences,sharedPreferences1,sharedPreferences3,sharedPreferences4;
-    int count1 = 0;
-    public static final String default_value = "12";
-    String font_size = "";
-    int flag , defaultValue = 2;
-    String default_chapter = "1";
+    SharedPreferences.Editor editor1,editor,editor2 ;
     Typeface customFont ,customFont1,customFont2;
-    boolean clicked = false;
     SimpleDateFormat sdf,sdf1 ;
     Date date ;
-    String formattedDate = "";
-    boolean date_flag = false,loginflag = true;
     AlertDialog.Builder alertDialogBuilder = null;
     View dialogLayout = null;
-    int ret = 0;
-    SharedPreferences.Editor editor1,editor,editor2 ;
+    FirebaseAuth mAuth;
+    FirebaseAuth.AuthStateListener authStateListener;
+    GoogleApiClient mGoogleApiClient;
+    private GoogleSignInClient mGoogleSignInClient;
+    Shlokas shlokas ;
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(authStateListener);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,10 +133,10 @@ public class UserMenu extends AppCompatActivity
         header4 = (TextView)findViewById(R.id.textView44);
         textView2 = (TextView)findViewById(R.id.textView41);
         textView3 = (TextView)findViewById(R.id.textView43);
-        editText = (EditText)findViewById(R.id.hidden_edit_view);
+        note = (TextView)findViewById(R.id.note_text_view);
         edit = (Button) findViewById(R.id.editbutton);
         notify = (Button)findViewById(R.id.notification_button2);
-        save = (Button)findViewById(R.id.button20);
+        read = (Button)findViewById(R.id.button20);
         customFont = Typeface.createFromAsset(getAssets(),"fonts/Lato-Regular.ttf");
         customFont1 = Typeface.createFromAsset(getAssets(),"fonts/Lato-Heavy.ttf");
         customFont2 = Typeface.createFromAsset(getAssets(),"fonts/Lato-Italic.ttf");
@@ -139,6 +147,31 @@ public class UserMenu extends AppCompatActivity
         textView1.setTypeface(customFont);
         textView2.setTypeface(customFont);
         textView3.setTypeface(customFont);
+        mAuth = FirebaseAuth.getInstance();
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        mGoogleApiClient = new GoogleApiClient.Builder(UserMenu.this)
+                .enableAutoManage(UserMenu.this, new GoogleApiClient.OnConnectionFailedListener() {
+                    @Override
+                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+                    }
+                })
+                .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        authStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if (firebaseAuth.getCurrentUser() == null) {
+                    System.out.println("*&&&&&&&&&&&(()("+firebaseAuth.getCurrentUser());
+               /*     Intent intent = new Intent(UserMenu.this, MyProfile.class);
+                    startActivity(intent);*/
+                }
+            }
+        };
         if(count1 == 0){
             font_size = "12";
         }
@@ -149,13 +182,10 @@ public class UserMenu extends AppCompatActivity
         textView1.setTextSize(TypedValue.COMPLEX_UNIT_SP,Integer.parseInt(font_size));
         textView2.setTextSize(TypedValue.COMPLEX_UNIT_SP,Integer.parseInt(font_size));
         textView3.setTextSize(TypedValue.COMPLEX_UNIT_SP,Integer.parseInt(font_size));
-        editText.setTypeface(customFont2);
-        editText.setInputType(InputType.TYPE_NULL);
+        note.setTypeface(customFont2);
         flag = sharedPreferences1.getInt("flag",defaultValue);
         count = db.userCount();
-        Shlokas shlokas = db.getsholka(1);
-        Toast.makeText(this, sharedPreferences4.getString("current_chapter",default_chapter), Toast.LENGTH_SHORT).show();
-        System.out.println("************************"+sharedPreferences4.getString("current_chapter",default_chapter));
+        shlokas = db.getsholka(Integer.valueOf(sharedPreferences.getString("current_chapter",default_chapter)));
 //        Shlokas shlokas = db.getsholka(Integer.parseInt(sharedPreferences4.getString("current_chapter",default_chapter)));
         id = shlokas.getId();
         title = "Chapter "+String.valueOf(id);
@@ -163,7 +193,8 @@ public class UserMenu extends AppCompatActivity
         translation = shlokas.getVerse_translation();
         purport = shlokas .getVerse_purpose();
         chapter_id = shlokas.getChapter_id();
-        access_flag = shlokas.getAccess_flag();
+        access_flag = shlokas.getAccessFlag();
+        read_flag = shlokas.getReadFlag();
         chapter.setText(String.valueOf(id));
         textView1.setText(verse);
         textView2.setText(translation);
@@ -181,6 +212,7 @@ public class UserMenu extends AppCompatActivity
             alertDialogBuilder = new AlertDialog.Builder(UserMenu.this);
             dialogLayout = getLayoutInflater().inflate(R.layout.activity_why_geeta,null);
             dismiss = (Button)dialogLayout.findViewById(R.id.button7);
+            dismiss = (Button)dialogLayout.findViewById(R.id.button7);
             alertDialogBuilder.setView(dialogLayout);
             final AlertDialog alertDialog1 = alertDialogBuilder.create();
             WindowManager.LayoutParams wmlp = alertDialog1.getWindow().getAttributes();
@@ -196,321 +228,49 @@ public class UserMenu extends AppCompatActivity
                 }
             });
             alertDialog1.show();
-            editor1 = sharedPreferences4.edit();
-            editor1.putString("current_chapter",chapter.getText().toString());
-            editor1.putString("date",formattedDate);
-            editor1.apply();
-            ret = updateAccessFlagForShloka(id,chapter_id);
         }
-        Toast.makeText(UserMenu.this,"Access Flag "+String.valueOf(shlokas.getAccess_flag()),Toast.LENGTH_LONG).show();
 
-        if(r == 0 && access_flag == false){
-            Toast.makeText(UserMenu.this,"First if",Toast.LENGTH_SHORT).show();
-            editText.setText("What do you learn from today's Chapter");
-            editText.setOnClickListener(new View.OnClickListener() {
+        List<Shlokas> shlokases1 = db.getAllShlokas();
+        for (Shlokas up:shlokases1) {
+            String log = "ID: " + up.getId() + ",Verse: " + up.getVerse_details() + ",Translation: " + up.getVerse_translation() + ",Purpose: " + up.getVerse_purpose() + ",Chapter_id: " + up.getChapter_id() +",Access Flag: "+up.getAccessFlag();
+            Log.d("Entry:",log);
+        }
+        read.setEnabled(true);
+        if(chapter_id == 0 && access_flag == 1){
+            note.setText("What do you learn from today's Chapter...");
+            note.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    editText.setInputType(InputType.TYPE_CLASS_TEXT);
-                    editText.setText("");
-                    editText.setCursorVisible(true);
-                    save.setVisibility(View.VISIBLE);
-                    edit.setVisibility(View.GONE);
-                    onSave(save,editText,chapter,diary_no);
-                    editText.setHorizontallyScrolling(false);
-                    editText.setMaxLines(10);
+                    Intent intent = new Intent(UserMenu.this,UserNote.class);
+                    intent.putExtra("chapter_number",chapter.getText().toString());
+                    startActivity(intent);
                 }
             });
         }
-/*
-        else if ( r==0 && access_flag){
-            Toast.makeText(UserMenu.this,"Second if",Toast.LENGTH_SHORT).show();
-            editText.setText("What do you learn from today's Chapter");
-            editText.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    editText.setInputType(InputType.TYPE_CLASS_TEXT);
-                    editText.setText("");
-                    editText.setCursorVisible(true);
-                    save.setVisibility(View.VISIBLE);
-                    edit.setVisibility(View.GONE);
-                    onSave(save,editText,chapter,diary_no);
-                    editText.setHorizontallyScrolling(false);
-                    editText.setMaxLines(10);
-                }
-            });
-        }
-*/
         else {
-            Toast.makeText(UserMenu.this,"Third if",Toast.LENGTH_SHORT).show();
-            save.setVisibility(View.GONE);
+
+//            read.setVisibility(View.GONE);
             edit.setVisibility(View.VISIBLE);
-            Diary diary = diaryDatabaseHandler.getContent(Integer.parseInt(chapter.getText().toString()));
+            //Diary diary = diaryDatabaseHandler.getContent(Integer.parseInt(chapter.getText().toString()));
+            Diary diary = diaryDatabaseHandler.getContent(chapter_id);
             final String data = diary.getDiary_details();
-            editText.setText(data);
-            editText.setInputType(InputType.TYPE_NULL);
+            note.setText(data);
+            //editText.setInputType(InputType.TYPE_NULL);
             diary_no.setText(chapter.getText().toString());
-            edit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(UserMenu.this,data,Toast.LENGTH_SHORT).show();
-
-                }
-            });
         }
-
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                chapter_no = Integer.parseInt(chapter.getText().toString());
-                 if(chapter_no == 1){
-                     chapter_no = db.userCount();
-                    Shlokas shlokas = db.getsholka(chapter_no);
-                    id = shlokas.getId();
-                    verse = shlokas.getVerse_details();
-                    translation = shlokas.getVerse_translation();
-                    purport = shlokas .getVerse_purpose();
-                    chapter_id = db.getChapterId(chapter_no);
-                    access_flag = db.getAccessFlag(chapter_no);
-                     Toast.makeText(UserMenu.this,String.valueOf(access_flag),Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(UserMenu.this,"Chapter_id = "+chapter_id,Toast.LENGTH_SHORT).show();
-                    if (chapter_id == 0){
-                        editText.setText("What do you learn from today's Chapter...");
-                        edit.setVisibility(View.GONE);
-                        editText.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                editText.setInputType(InputType.TYPE_CLASS_TEXT);
-                                editText.setText("");
-                                editText.setCursorVisible(true);
-                                save.setVisibility(View.VISIBLE);
-                                onSave(save,editText,chapter,diary_no);
-                                editText.setHorizontallyScrolling(false);
-                                editText.setMaxLines(10);
-
-                            }
-                        });
-                    }
-                    else{
-                        Diary diary = diaryDatabaseHandler.getContent(chapter_no);
-                        diary_entry = diary.getDiary_details();
-                        save.setVisibility(View.GONE);
-                        edit.setVisibility(View.VISIBLE);
-                        editText.setInputType(InputType.TYPE_NULL);
-                        editText.setText(diary_entry);
-  //                      Toast.makeText(UserMenu.this,"Inside else of back button",Toast.LENGTH_SHORT).show();
-
-                    }
-                    chapter.setText(String.valueOf(chapter_no));
-                    textView1.setText(verse);
-                    textView2.setText(translation);
-                    textView3.setText(purport);
-
-               }
-                else {
-                    chapter_no = chapter_no - 1;
-                    Shlokas shlokas = db.getsholka(chapter_no);
-                    id = shlokas.getId();
-                    verse = shlokas.getVerse_details();
-                    translation = shlokas.getVerse_translation();
-                    purport = shlokas.getVerse_purpose();
-                    chapter_id = db.getChapterId(chapter_no);
-                     access_flag = db.getAccessFlag(chapter_no);
-                     Toast.makeText(UserMenu.this,String.valueOf(access_flag),Toast.LENGTH_SHORT).show();
-
-//                    Toast.makeText(UserMenu.this,"Chapter_id = "+chapter_id,Toast.LENGTH_SHORT).show();
-                    if (chapter_id == 0 ){
-                        editText.setText("What do you learn from today's Chapter...");
-                        edit.setVisibility(View.GONE);
-                        editText.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                editText.setInputType(InputType.TYPE_CLASS_TEXT);
-                                editText.setText("");
-                                editText.setCursorVisible(true);
-                                save.setVisibility(View.VISIBLE);
-                                onSave(save,editText,chapter,diary_no);
-                                editText.setHorizontallyScrolling(false);
-                                editText.setMaxLines(10);
-                                chapter.setText(String.valueOf(chapter_no));
-                                textView1.setText(verse);
-                                textView2.setText(translation);
-                                textView3.setText(purport);
-
-
-                            }
-                        });
-
-                    }
-                    else {
-                        Diary diary = diaryDatabaseHandler.getContent(chapter_no);
-                        diary_entry = diary.getDiary_details();
-                        save.setVisibility(View.GONE);
-                        edit.setVisibility(View.VISIBLE);
-                        editText.setInputType(InputType.TYPE_NULL);
-                        editText.setText(diary_entry);
-  //                    Toast.makeText(UserMenu.this,"Inside else of back button",Toast.LENGTH_SHORT).show();
-
-                    }
-/*
-                    chapter.setText(String.valueOf(chapter_no));
-                    textView1.setText(verse);
-                    textView2.setText(translation);
-                    textView3.setText(purport);*/
-                    }
-            }
-        });
-        front.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                chapter_no = Integer.parseInt(chapter.getText().toString());
-                 if (chapter_no == db.userCount()){
-                    chapter_no = 1;
-                    Shlokas shlokas = db.getsholka(chapter_no);
-                    id = shlokas.getId();
-                    verse = shlokas.getVerse_details();
-                    translation = shlokas.getVerse_translation();
-                    purport = shlokas .getVerse_purpose();
-                    chapter_id = db.getChapterId(chapter_no);
-                     access_flag = db.getAccessFlag(chapter_no);
-                     Toast.makeText(UserMenu.this,String.valueOf(access_flag),Toast.LENGTH_SHORT).show();
-
-                     //                Toast.makeText(UserMenu.this,"Chapter_id = "+chapter_id,Toast.LENGTH_SHORT).show();
-                    if (chapter_id == 0){
-                        editText.setText("What do you learn from today's Chapter...");
-                        edit.setVisibility(View.GONE);
-                        editText.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                editText.setInputType(InputType.TYPE_CLASS_TEXT);
-                                editText.setText("");
-                                editText.setCursorVisible(true);
-                                save.setVisibility(View.VISIBLE);
-                                onSave(save,editText,chapter,diary_no);
-                                editText.setHorizontallyScrolling(false);
-                                editText.setMaxLines(10);
-
-                            }
-                        });
-
-                    }
-                    else{
-                        Diary diary = diaryDatabaseHandler.getContent(chapter_no);
-                        diary_entry = diary.getDiary_details();
-                        editText.setText(diary_entry);
-                        save.setVisibility(View.GONE);
-                        edit.setVisibility(View.VISIBLE);
-      //                  Toast.makeText(UserMenu.this,"Inside else of Front button",Toast.LENGTH_SHORT).show();
-                    }
-                    chapter.setText(String.valueOf(chapter_no));
-                    textView1.setText(verse);
-                    textView2.setText(translation);
-                    textView3.setText(purport);
-                }
-                else {
-                    chapter_no = chapter_no + 1;
-                    Shlokas shlokas = db.getsholka(chapter_no);
-                    id = shlokas.getId();
-                    chapter_id = db.getChapterId(chapter_no);
-                    date_flag = compareDate(id,chapter_id);//added the parameters
-                    verse = shlokas.getVerse_details();
-                    translation = shlokas.getVerse_translation();
-                    purport = shlokas.getVerse_purpose();
-                    access_flag = db.getAccessFlag(chapter_no);
-                    Toast.makeText(UserMenu.this,"Chapter_id = "+chapter_id,Toast.LENGTH_SHORT).show();
-                    /* Toast.makeText(UserMenu.this,String.valueOf(access_flag)+" Date:"+formattedDate,Toast.LENGTH_SHORT).show();
-                     SharedPreferences.Editor editor = sharedPreferences4.edit();
-                     editor.putString("current_chapter",String.valueOf(chapter_no));
-                     editor.putString("date",formattedDate);
-                     editor.apply();
-                    */ //
-                     Toast.makeText(UserMenu.this,"Chapter ="+chapter.getText().toString(),Toast.LENGTH_SHORT).show();
-                     Toast.makeText(UserMenu.this,"Date Flag="+String.valueOf(date_flag),Toast.LENGTH_SHORT).show();
-                     Toast.makeText(UserMenu.this,"Access Flag="+String.valueOf(access_flag),Toast.LENGTH_SHORT).show();
-
-
-                     System.out.println("Chapter_id = "+chapter_id);
-                     System.out.println("Chapter ="+chapter.getText().toString());
-                     System.out.println("Date Flag="+String.valueOf(date_flag));
-                     System.out.println("Access Flag="+String.valueOf(access_flag));
-
-
-                  /*   if( date_flag ){
-                         int ret = updateAccessFlagForShloka(id,chapter_id);
-                         SharedPreferences.Editor editor = sharedPreferences4.edit();
-                         editor.putString("current_chapter",chapter.getText().toString());
-                         editor.putString("date",formattedDate);
-                         editor.apply();
-                         Toast.makeText(UserMenu.this,"date_flag",Toast.LENGTH_SHORT).show();
-                     }
-*/
-                      if (chapter_id == 0 && date_flag ){  /*removed access flag*/
-                         editText.setText("What do you learn from today's Chapter...");
-                         edit.setVisibility(View.GONE);
-                         editText.setOnClickListener(new View.OnClickListener() {
-                             @Override
-                             public void onClick(View v) {
-                                 editText.setInputType(InputType.TYPE_CLASS_TEXT);
-                                 editText.setText("");
-                                 editText.setCursorVisible(true);
-                                 save.setVisibility(View.VISIBLE);
-                                 onSave(save,editText,chapter,diary_no);
-                                 editText.setHorizontallyScrolling(false);
-                                 editText.setMaxLines(10);
-                                 Toast.makeText(UserMenu.this,"chapter_id == 0 && access_flag && date_flag",Toast.LENGTH_SHORT).show();
-                             }
-                         });
-                         chapter.setText(String.valueOf(chapter_no));
-                         textView1.setText(verse);
-                         textView2.setText(translation);
-                         textView3.setText(purport);
-                    }
-                    else if ( chapter_id!= 0 && date_flag ){  /*removed access flag*/
-                        Diary diary = diaryDatabaseHandler.getContent(chapter_no);
-                        diary_entry = diary.getDiary_details();
-                        editText.setText(diary_entry);
-                        save.setVisibility(View.GONE);
-                        edit.setVisibility(View.VISIBLE);
-                        editText.setInputType(InputType.TYPE_NULL);
-                         Toast.makeText(UserMenu.this,"chapter_id!= 0 && access_flag && date_flag",Toast.LENGTH_SHORT).show();
-
-                    }
-/*
-                    chapter.setText(String.valueOf(chapter_no));
-                    textView1.setText(verse);
-                    textView2.setText(translation);
-                    textView3.setText(purport);*/
-                    }
-            }
-        });
-/*
-        int r1 = db.getChapterId(Integer.parseInt(chapter.getText().toString()));
-        Toast.makeText(UserMenu.this.getApplicationContext(),String.valueOf(r1),Toast.LENGTH_SHORT).show();
-*/
-        edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Chapter chapter1 = new Chapter();
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                bundle.putString("chapter_no",chapter.getText().toString());
-                bundle.putString("diary_data",editText.getText().toString());
-                chapter1.setArguments(bundle);
-                fragmentManager.beginTransaction().replace(R.id.content_user_menu,chapter1,chapter1.getTag()).commit();
-
-            }
-        });
+          read.setOnClickListener(UserMenu.this);
+          back.setOnClickListener(UserMenu.this);
+          front.setOnClickListener(UserMenu.this);
+          edit.setOnClickListener(UserMenu.this);
         play_music = (Button)findViewById(R.id.imageButton2);
-       // final MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.bgita);
+        // final MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.bgita);
         //drawerLayout = (DrawerLayout)view.findViewById(R.id.drawer_layout);
-        //viewSwitcher = (ViewSwitcher)findViewById(R.id.view_switcher);
         bundle = getIntent().getExtras();
         uname = bundle.getString("user_name");
         umobilenumber = bundle.getString("user_mobilenumber");
         uemail = bundle.getString("user_email");
         uaddress = bundle.getString("user_address");
         ucity = bundle.getString("user_city");
-
-
         notify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -523,10 +283,8 @@ public class UserMenu extends AppCompatActivity
                 startActivity(intent);
             }
         });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -551,20 +309,13 @@ public class UserMenu extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         name = (TextView)headerView.findViewById(R.id.user_name1);
         name.setText(uname);
-        List<Shlokas> shlokases = db.getAllShlokas();
-        for (Shlokas up:shlokases) {
-            String log = "ID:" + up.getId() + ",Verse:" + up.getVerse_details() + ",Translation:" + up.getVerse_translation() + ",Purpose:" + up.getVerse_purpose() + ",Chapter_id" + up.getChapter_id() +",Access Flag"+up.getAccess_flag();
-            Log.d("Entry:",log);
-        }
+    }
 
-     /*   List<Diary> diaryList = diaryDatabaseHandler.getAllUsers();
-        for (Diary up:diaryList) {
-            String log = "Chapter_no:" + up.getChapter_no() + ",Diary Details:" + up.getDiary_details() ;
-            //writing users to the list
-            Log.d("Entry:",log);
-        }*/
-
-
+    private void setValues(int chapter_no, String verse, String translation, String purport) {
+        chapter.setText(String.valueOf(chapter_no));
+        textView1.setText(verse);
+        textView2.setText(translation);
+        textView3.setText(purport);
     }
 
     private boolean compareDate(int id,int chapter_id)  {
@@ -572,8 +323,8 @@ public class UserMenu extends AppCompatActivity
         sdf = new SimpleDateFormat("MM/dd/yyyy",Locale.ENGLISH);
         Date c = Calendar.getInstance().getTime();
         String formattedDate = sdf.format(c);
-        SharedPreferences sharedPreferences4 = getSharedPreferences("shloka_data", Context.MODE_PRIVATE);
-         String date = sharedPreferences4.getString("date",default_date);
+        SharedPreferences sharedPreferences4 = getSharedPreferences("app_data", Context.MODE_PRIVATE);
+        String date = sharedPreferences4.getString("date",default_date);
         //String date = "04/01/2018";
         Date date1 = null , date2 = null;
         try {
@@ -585,10 +336,14 @@ public class UserMenu extends AppCompatActivity
         if (date2.after(date1))
         {
             int ret = updateAccessFlagForShloka(id,chapter_id);
+            Toast.makeText(this,"Data going in Shared Preference"+chapter.getText().toString() , Toast.LENGTH_SHORT).show();
             SharedPreferences.Editor editor = sharedPreferences4.edit();
-            editor.putString("current_chapter",chapter.getText().toString());
+            //editor.putString("current_chapter",chapter.getText().toString());
+            editor.putString("current_chapter",String.valueOf(id));
             editor.putString("date",formattedDate);
             editor.apply();
+            read.setEnabled(true);
+            read.setBackgroundColor(getResources().getColor(R.color.backgroundcolor1));
             Toast.makeText(UserMenu.this,"Date2 greater than Date1",Toast.LENGTH_SHORT).show();
             Toast.makeText(UserMenu.this,"Date in SharedPreferences"+date,Toast.LENGTH_SHORT).show();
             Toast.makeText(UserMenu.this,"Current date"+formattedDate,Toast.LENGTH_SHORT).show();
@@ -610,8 +365,14 @@ public class UserMenu extends AppCompatActivity
     }
     private int updateAccessFlagForShloka(int id, int chapter_id) {
         DataBaseHandlerShloka dataBaseHandlerShloka = new DataBaseHandlerShloka(this);
-        boolean value = true;
-        int ret = dataBaseHandlerShloka.updateAccessFlag(new Shlokas(id,chapter_id,value));
+
+        int ret = dataBaseHandlerShloka.updateAccessFlag(new Shlokas(id,chapter_id,1));
+        List<Shlokas> shlokases = dataBaseHandlerShloka.getAllShlokas();
+        for (Shlokas up:shlokases) {
+            String log = "ID:" + up.getId() + ",Verse:" + up.getVerse_details() + ",Translation:" + up.getVerse_translation() + ",Purpose:" + up.getVerse_purpose() + ",Chapter_id" + up.getChapter_id() +",Access Flag"+up.getAccessFlag();
+            Log.d("Entry:",log);
+        }
+
         if (ret == 1){
             Toast.makeText(UserMenu.this,"Success",Toast.LENGTH_SHORT).show();
         }
@@ -620,8 +381,7 @@ public class UserMenu extends AppCompatActivity
         }
         return ret;
     }
-
-    private void saveData(String data_to_be_saved, TextView chapter) {
+  /*  private void saveData(String data_to_be_saved, TextView chapter) {
         DiaryDatabaseHandler diaryDatabaseHandler = new DiaryDatabaseHandler(this);
         DataBaseHandlerShloka dataBaseHandlerShloka = new DataBaseHandlerShloka(this);
         int chapter_no = Integer.parseInt(chapter.getText().toString());
@@ -635,37 +395,37 @@ public class UserMenu extends AppCompatActivity
         }
         out.print("**************"+v);
         edit.setVisibility(View.VISIBLE);
-        save.setVisibility(View.GONE);
+        read.setVisibility(View.GONE);
+
+    }*/
+
+    private void onRead(TextView chapter, DataBaseHandlerShloka db) {
+        int chapter_no = Integer.parseInt(chapter.getText().toString());
+        int chapter_id = db.getChapterId(chapter_no);
+        int access_flag = db.getaccessFlag(chapter_no);
+        int v = db.updateReadFlag(new Shlokas(chapter_no,chapter_id,access_flag,1));
+        read.setBackgroundColor(getResources().getColor(R.color.textcolor));
+        Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
+        read.setEnabled(false);
+
 
     }
-    private void onSave(Button save, final EditText editText, final TextView chapter, final TextView diary_no){
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String data_to_be_saved = editText.getText().toString();
-                saveData(data_to_be_saved,chapter);
-                editText.setText(data_to_be_saved);
-                diary_no.setText(chapter.getText().toString());
-            }
-        });
-    }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-       if (drawer.isDrawerOpen(GravityCompat.START)) {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-       }
-       else {
+        }
+        else {
             super.onBackPressed();
-       }
+        }
     }
-@Override
-public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.user_menu, menu);
-    return false;
-}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.user_menu, menu);
+        return false;
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -720,7 +480,12 @@ public boolean onCreateOptionsMenu(Menu menu) {
         } else if (id == R.id.nav_userguide) {
 
         } else if (id == R.id.nav_share) {
-
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+            sendIntent.setType("text/plain");
+//                sendIntent.setPackage("com.whatsapp");
+            startActivity(sendIntent);
         } else if (id == R.id.nav_rate) {
             final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(UserMenu.this);
             final View dialogLayout = getLayoutInflater().inflate(R.layout.activity_rate_us1,null);
@@ -815,7 +580,7 @@ public boolean onCreateOptionsMenu(Menu menu) {
 
                         }
                     });
-                  alertDialogBuilder1.setView(dialogLayout1);
+                    alertDialogBuilder1.setView(dialogLayout1);
                     AlertDialog alertDialog1 = alertDialogBuilder1.create();
                     alertDialog1.show();
                 }
@@ -872,11 +637,35 @@ public boolean onCreateOptionsMenu(Menu menu) {
             editor.apply();
             FacebookSdk.sdkInitialize(this.getApplicationContext());
             disconnectFromFacebook();
+            signOut();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void signOut() {
+        /*mGoogleSignInClient.signOut()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // [START_EXCLUDE]
+                        //updateUI(null);
+                        // [END_EXCLUDE]
+                    }
+                });
+*/
+
+
+        // Firebase sign out
+        mAuth.signOut();
+        // Google sign out
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback( new ResultCallback<Status>() {
+            @Override public void onResult(@NonNull Status status) {
+                //put something you want to happen here eg.
+                startActivity(new Intent(UserMenu.this, MyProfile.class)); } });
+
     }
 
     private void disconnectFromFacebook() {
@@ -901,6 +690,8 @@ public boolean onCreateOptionsMenu(Menu menu) {
     @Override
     protected void onResume() {
         super.onResume();
+        //chapter_no = Integer.valueOf(sharedPreferences.getString("current_chapter",default_chapter));
+        //Toast.makeText(this, "Current chapter"+sharedPreferences.getString("current_chapter",default_chapter), Toast.LENGTH_SHORT).show();
         if(count1 == 0){
             font_size = "12";
         }
@@ -915,4 +706,201 @@ public boolean onCreateOptionsMenu(Menu menu) {
         Log.d("msg","on resume");
 
     }
-}
+    public void onClick(View v){
+        DataBaseHandlerShloka db = new DataBaseHandlerShloka(this);
+        switch (v.getId()){
+            case R.id.button20:
+                onRead(chapter,db);
+                break;
+            case R.id.imageView18:
+                onBack(db);
+                break;
+            case R.id.imageView21:
+                onFront(db);
+                break;
+            case R.id.editbutton:
+                onEdit();
+                break;
+            default:break;
+        }
+    }
+    private void onEdit() {
+        Chapter chapter1 = new Chapter();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        bundle.putString("chapter_no",chapter.getText().toString());
+        bundle.putString("diary_data",note.getText().toString());
+        chapter1.setArguments(bundle);
+        if (fragmentManager.getBackStackEntryCount() > 0) {
+            fragmentManager.popBackStack();}
+            fragmentManager
+                            .beginTransaction()
+                            .addToBackStack(chapter1.getTag())
+                            .replace(R.id.content_user_menu,chapter1,chapter1.getTag())
+                            .commit();
+    }
+
+    private void onFront(DataBaseHandlerShloka db) {
+        chapter_no = Integer.parseInt(chapter.getText().toString()) + 1;
+        //chapter_no = Integer.valueOf(sharedPreferences.getString("current_chapter",default_chapter)) + 1;
+        Toast.makeText(UserMenu.this,"Total number of shlokas" +String.valueOf(db.userCount()), Toast.LENGTH_SHORT).show();
+        if (chapter_no > db.userCount()){
+            chapter_no = 1;
+            Shlokas shlokas = db.getsholka(chapter_no);
+            id = shlokas.getId();
+            verse = shlokas.getVerse_details();
+            translation = shlokas.getVerse_translation();
+            purport = shlokas .getVerse_purpose();
+            chapter_id = db.getChapterId(chapter_no);
+            access_flag = db.getaccessFlag(chapter_no);
+            read_flag = db.getReadFlag(chapter_no);
+            read.setEnabled(false);
+            Toast.makeText(UserMenu.this,String.valueOf(access_flag),Toast.LENGTH_SHORT).show();
+            if (chapter_id == 0 && access_flag == 1 && read_flag == 1){
+                note.setText("What do you learn from today's Chapter...");
+                edit.setVisibility(View.GONE);
+                note.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(UserMenu.this,UserNote.class);
+                        intent.putExtra("chapter_number",chapter.getText().toString());
+                        startActivity(intent);
+                    }
+                });
+            }
+            else if(chapter_id != 0 && access_flag == 1 && read_flag == 1){
+                Diary diary = diaryDatabaseHandler.getContent(chapter_no);
+                diary_entry = diary.getDiary_details();
+                editText.setText(diary_entry);
+                //read.setVisibility(View.GONE);
+                edit.setVisibility(View.VISIBLE);
+                //                  Toast.makeText(UserMenu.this,"Inside else of Front button",Toast.LENGTH_SHORT).show();
+            }
+            setValues(chapter_no,verse,translation,purport);
+
+        }
+        else {
+//                    chapter_no = chapter_no + 1;
+
+            Shlokas shlokas = db.getsholka(chapter_no);
+            id = shlokas.getId();
+            chapter_id = db.getChapterId(chapter_no);
+            //Toast.makeText(UserMenu.this,"ID "+id +"Chapter id "+chapter_id,Toast.LENGTH_SHORT).show();
+
+            date_flag = compareDate(id,chapter_id);//added the parameters
+            verse = shlokas.getVerse_details();
+            translation = shlokas.getVerse_translation();
+            purport = shlokas.getVerse_purpose();
+            access_flag = db.getaccessFlag(chapter_no);
+        //    Toast.makeText(UserMenu.this,"Access Flag "+access_flag,Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(UserMenu.this,"Chapter id "+chapter_id,Toast.LENGTH_SHORT).show();
+            //read.setEnabled(true);
+            //read.setBackgroundColor(getResources().getColor(R.color.backgroundcolor1));
+            if (chapter_id == 0 && access_flag == 1 && read_flag == 1 ){
+                note.setText("What do you learn from today's Chapter...");
+                edit.setVisibility(View.GONE);
+                setValues(chapter_no,verse,translation,purport);
+                note.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(UserMenu.this,UserNote.class);
+                        intent.putExtra("chapter_number",chapter.getText().toString());
+                        startActivity(intent);
+                        Toast.makeText(UserMenu.this,"chapter_id == 0 && access_flag && date_flag",Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+            else if ( chapter_id!= 0 && access_flag == 1 ){
+                setValues(chapter_no,verse,translation,purport);
+                Diary diary = diaryDatabaseHandler.getContent(chapter_no);
+                diary_entry = diary.getDiary_details();
+                note.setText(diary_entry);
+                //read.setVisibility(View.GONE);
+                edit.setVisibility(View.VISIBLE);
+                //note.setInputType(InputType.TYPE_NULL);
+                Toast.makeText(UserMenu.this,"chapter_id!= 0 && access_flag && date_flag",Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+    private void onBack(DataBaseHandlerShloka db) {
+
+        chapter_no = Integer.parseInt(chapter.getText().toString()) - 1;
+        if(chapter_no == 0){
+            chapter_no = db.userCount();
+            Shlokas shlokas = db.getsholka(chapter_no);
+            id = shlokas.getId();
+            verse = shlokas.getVerse_details();
+            translation = shlokas.getVerse_translation();
+            purport = shlokas .getVerse_purpose();
+            chapter_id = db.getChapterId(chapter_no);
+            access_flag = db.getaccessFlag(chapter_no);
+            read_flag = db.getReadFlag(chapter_no);
+            read.setEnabled(false);
+            read.setBackgroundColor(getResources().getColor(R.color.textcolor));
+//                    Toast.makeText(UserMenu.this,"Chapter_id = "+chapter_id,Toast.LENGTH_SHORT).show();
+            if (chapter_id == 0 && access_flag == 1){
+                note.setText("What do you learn from today's Chapter...");
+                edit.setVisibility(View.GONE);
+                note.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(UserMenu.this,UserNote.class);
+                        intent.putExtra("chapter_number",chapter.getText().toString());
+                        startActivity(intent);
+                    }
+                });
+                setValues(chapter_no,verse,translation,purport);
+            }
+            else if (chapter_id != 0 && access_flag == 1){
+                Diary diary = diaryDatabaseHandler.getContent(chapter_no);
+                diary_entry = diary.getDiary_details();
+                //read.setVisibility(View.GONE);
+                edit.setVisibility(View.VISIBLE);
+                //editText.setInputType(InputType.TYPE_NULL);
+                note.setText(diary_entry);
+
+                setValues(chapter_no,verse,translation,purport);
+            }
+        }
+        else {
+            Toast.makeText(UserMenu.this,"test"+ String.valueOf(chapter_no), Toast.LENGTH_SHORT).show();
+
+            //chapter_no = chapter_no - 1;
+            Shlokas shlokas = db.getsholka(chapter_no);
+            id = shlokas.getId();
+            verse = shlokas.getVerse_details();
+            translation = shlokas.getVerse_translation();
+            purport = shlokas.getVerse_purpose();
+            chapter_id = db.getChapterId(chapter_no);
+            access_flag = db.getaccessFlag(chapter_no);
+            read.setEnabled(false);
+            read.setBackgroundColor(getResources().getColor(R.color.textcolor));
+//                    Toast.makeText(UserMenu.this,"Chapter_id = "+chapter_id,Toast.LENGTH_SHORT).show();
+            if (chapter_id == 0 && access_flag == 1){
+                note.setText("What do you learn from today's Chapter...");
+                edit.setVisibility(View.GONE);
+                Toast.makeText(UserMenu.this,"first if",Toast.LENGTH_SHORT).show();
+                note.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(UserMenu.this,UserNote.class);
+                        intent.putExtra("chapter_number",chapter.getText().toString());
+                        startActivity(intent);
+                        editText.setMaxLines(10);
+                    }
+                });
+                setValues(chapter_no,verse,translation,purport);
+            }
+            else  if (chapter_id != 0 && access_flag == 1){
+                Toast.makeText(UserMenu.this,"second if",Toast.LENGTH_SHORT).show();
+                Diary diary = diaryDatabaseHandler.getContent(chapter_no);
+                diary_entry = diary.getDiary_details();
+               // read.setVisibility(View.GONE);
+                edit.setVisibility(View.VISIBLE);
+                //editText.setInputType(InputType.TYPE_NULL);
+                note.setText(diary_entry);
+                setValues(chapter_no,verse,translation,purport);
+
+            }
+        }
+    }
+    }

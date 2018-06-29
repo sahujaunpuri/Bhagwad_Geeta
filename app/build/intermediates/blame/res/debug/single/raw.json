@@ -32,6 +32,10 @@
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\raw\\osmium.ogg"
     },
     {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\raw\\bgita.mp3",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\raw\\bgita.mp3"
+    },
+    {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\raw\\neon.ogg",
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\raw\\neon.ogg"
     }

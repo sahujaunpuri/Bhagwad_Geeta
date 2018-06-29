@@ -27,7 +27,7 @@ import java.util.Calendar;
  */
 /*public class SetReminder extends Fragment {*/
 public class SetReminder extends AppCompatActivity{
-    Button addReminder,cancel;
+    Button addReminder;
     ImageButton back;
     Toolbar toolbar;
     Bundle bundle;
@@ -55,7 +55,7 @@ public class SetReminder extends AppCompatActivity{
             }
         });
         addReminder = (Button)findViewById(R.id.button8);
-        cancel = (Button)findViewById(R.id.button9);
+        /*cancel = (Button)findViewById(R.id.button9);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +67,7 @@ public class SetReminder extends AppCompatActivity{
                 intent.putExtra("user_city",city);
                 startActivity(intent);
             }
-        });
+        });*/
         addReminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,5 +117,4 @@ public class SetReminder extends AppCompatActivity{
         });
 
     }
-
 }

@@ -20,6 +20,10 @@
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\krishna_roundimage.png"
     },
     {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\instagram.png",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\instagram.png"
+    },
+    {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\ic_launcher1.png",
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher1.png"
     },
@@ -42,6 +46,10 @@
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\delete1.png",
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\delete1.png"
+    },
+    {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\whatsapp1.png",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\whatsapp1.png"
     },
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\home_screenimage.png",
@@ -122,6 +130,10 @@
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\terms_and_conditions.png",
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\terms_and_conditions.png"
+    },
+    {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\hike.png",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\hike.png"
     },
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\up_arrow.png",
@@ -222,6 +234,10 @@
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\back_arrow.png",
         "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\back_arrow.png"
+    },
+    {
+        "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\facebook_box.png",
+        "source": "D:\\android\\Geeta\\app\\src\\main\\res\\mipmap-mdpi\\facebook_box.png"
     },
     {
         "merged": "D:\\android\\Geeta\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\backarrowwhite.png",

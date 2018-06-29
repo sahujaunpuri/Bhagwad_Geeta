@@ -4,11 +4,14 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
@@ -23,6 +26,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -34,15 +39,49 @@ public class ThirdScreen extends AppCompatActivity {
     public boolean dialogflag = false;
     private GestureDetectorCompat gestureDetectorCompat;
     SharedPreferences sharedPreferences;
+    public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
+    private boolean checkAndRequestPermissions() {
+        int permissionSendMessage = ContextCompat.checkSelfPermission(this,
+                android.Manifest.permission.SEND_SMS);
+
+        int receiveSMS = ContextCompat.checkSelfPermission(this,
+                android.Manifest.permission.RECEIVE_SMS);
+
+        int readSMS = ContextCompat.checkSelfPermission(this,
+                android.Manifest.permission.READ_SMS);
+        List<String> listPermissionsNeeded = new ArrayList<>();
+
+        if (receiveSMS != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(android.Manifest.permission.RECEIVE_MMS);
+        }
+        if (readSMS != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(android.Manifest.permission.READ_SMS);
+        }
+        if (permissionSendMessage != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(android.Manifest.permission.SEND_SMS);
+        }
+        if (!listPermissionsNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions(this,
+                    listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),
+                    REQUEST_ID_MULTIPLE_PERMISSIONS);
+            return false;
+        }
+        return true;
+    }
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thirdscreen);
+        //setContentView(R.layout.test);
+        checkAndRequestPermissions();//Added to extract the permissions
+
         heading = (TextView)findViewById(R.id.textView);
         content = (TextView)findViewById(R.id.textView16);
         getStarted = (TextView)findViewById(R.id.textView24);
+
         sharedPreferences = getSharedPreferences("shloka_data", Context.MODE_PRIVATE);
         Typeface customFont = Typeface.createFromAsset(getAssets(),"fonts/Lato-Regular.ttf");
+
         heading.setTypeface(customFont);
         content.setTypeface(customFont);
         getStarted.setTypeface(customFont);
@@ -63,6 +102,7 @@ public class ThirdScreen extends AppCompatActivity {
                 }
             }
         });
+
         gestureDetectorCompat = new GestureDetectorCompat(this,new MyGestureListener());
 
     }

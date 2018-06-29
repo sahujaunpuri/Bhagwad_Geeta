@@ -2,6 +2,7 @@ package com.application.aayush.geeta;
 
 
 import android.app.AlarmManager;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +10,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.NotificationCompat;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +55,7 @@ public class AddReminder extends Fragment {
     public static final String default_value1 = "N/A";
     public static final String default_sound = "Default Ringtone";
     ImageButton back;
-
+    SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm");
     public AddReminder() {
         // Required empty public constructor
     }
@@ -109,9 +113,11 @@ public class AddReminder extends Fragment {
         changeRingtone = (TextView)view.findViewById(R.id.textView49);
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+5:30"));
         Date currentLocalTime = cal.getTime();
+
         final int h = currentLocalTime.getHours();
         final int m = currentLocalTime.getMinutes();
         changeRingtone.setText(sharedPreferences.getString("alarm_sound",default_sound));
+        aSwitch.setChecked(true);
         changeRingtone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -198,7 +204,7 @@ public class AddReminder extends Fragment {
             editor.putInt("hour",hour);
             editor.putInt("minute",minute);
             editor.apply();
-            if(hour >= 1 && hour <= 12){
+            if(hour >= 1 && hour < 12){
                 if(minute<10){
                     text = hour+":0"+minute+" a.m. ";
                 }
@@ -232,8 +238,18 @@ public class AddReminder extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
+                    int hr = 0,min = 0 ;
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.set(Calendar.HOUR_OF_DAY, hr);
+                    calendar.set(Calendar.MINUTE, min);
+
+                    if(calendar.before(Calendar.getInstance())) {
+                        calendar.add(Calendar.DATE, 1);
+                    }
                     hour = hour - h;
                     minute = minute - m;
+
+
                     if(hour>1&&minute>1){
                      text1 =" Alarm set for "+hour+"hours and "+minute+"minutes from now on";
                     }
@@ -246,19 +262,41 @@ public class AddReminder extends Fragment {
                     else if (hour>1 && minute <1){
                         text1 =" Alarm set for "+hour+"hours and "+minute+"minutes from now on";
                     }
+                    addNotification();
                     Toast.makeText(AddReminder.this.getContext(),text1,Toast.LENGTH_SHORT).show();
+                    alarmTime = hour*3600+minute*60;
+                    long x = calendar.getTimeInMillis() + (long)(alarmTime*1000);
+                    Intent intent = new Intent(getActivity(),AlarmReceiver.class);
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                    AlarmManager alarmManager = (AlarmManager)getActivity().getSystemService(Context.ALARM_SERVICE);
+                    //alarmManager.set(AlarmManager.RTC_WAKEUP,x,pendingIntent);
+                    alarmManager.setExact(AlarmManager.RTC_WAKEUP,x,pendingIntent);
+                    Toast.makeText(AddReminder.this.getContext(), String.valueOf(System.currentTimeMillis()+alarmTime*1000), Toast.LENGTH_SHORT).show();
+
                 }
-                alarmTime = hour*3600+minute*60;
-                Intent intent = new Intent(getActivity(),AlarmReceiver.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(),0,intent,0);
-                AlarmManager alarmManager = (AlarmManager)getActivity().getSystemService(Context.ALARM_SERVICE);
-                alarmManager.set(AlarmManager.RTC_WAKEUP,System.currentTimeMillis()+alarmTime*1000,pendingIntent);
             }
         });
 
         //      TimeAdapter ca = new TimeAdapter(createList(1));
 //        recyclerView.setAdapter(ca);
         return view;
+    }
+
+    private void addNotification() {
+        NotificationCompat.Builder builder =
+                (NotificationCompat.Builder) new NotificationCompat.Builder(getActivity())
+                        .setSmallIcon(R.mipmap.shell)
+                        .setContentTitle("Notifications Example")
+                        .setContentText("This is a test notification");
+
+        Intent notificationIntent = new Intent(getContext(), AddReminder.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(getContext(), 0, notificationIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(contentIntent);
+
+        // Add as notification
+        NotificationManager manager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(0, builder.build());
     }
 /*
     private List<ReminderDetails> createList(int size) {

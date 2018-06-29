@@ -21,15 +21,16 @@ import static com.application.aayush.geeta.DiaryDatabaseHandler.TABLE_DIARY;
  */
 
 public class DataBaseHandlerShloka extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 1;
-    private static final String TABLE_SHLOKA = "shloka11";
+    private static final int DATABASE_VERSION = 4;
+    private static final String TABLE_SHLOKA = "shlokas_12";
     private static final String DATABASE_NAME = "shloka_manager11";
-    private static String KEY_SHLOKA_ID = "id";
+    private static final String KEY_SHLOKA_ID = "id";
     private static final String KEY_SHLOKA_DETAIL = "verse";
     private static final String KEY_SHLOKA_TRANSLATION = "translation";
     private static final String KEY_SHLOKA_PURPOSE = "purpose";
     private static final String KEY_CHAPTER_ID = "chapter_id";
     private static final String KEY_SHLOKA_ACCESS_FLAG = "access_flag";
+    private static final String KEY_SHLOKA_READ_FLAG = "read_flag";
     public DataBaseHandlerShloka(Context context) {
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
         //3rd argument to be passed is cursorFactory instance
@@ -43,7 +44,8 @@ public class DataBaseHandlerShloka extends SQLiteOpenHelper {
                 + KEY_SHLOKA_TRANSLATION + " TEXT,"
                 + KEY_SHLOKA_PURPOSE + " TEXT,"
                 + KEY_CHAPTER_ID + " INTEGER DEFAULT 0,"
-                + KEY_SHLOKA_ACCESS_FLAG + " BOOLEAN DEFAULT FALSE,"
+                + KEY_SHLOKA_ACCESS_FLAG + " INTEGER DEFAULT 0,"
+                + KEY_SHLOKA_READ_FLAG + " INTEGER DEFAULT 0,"
                 + " FOREIGN KEY("+KEY_CHAPTER_ID+") REFERENCES "+TABLE_DIARY+"("+KEY_CHAPTER_ID+"));";
         db.execSQL(CREATE_SHLOKA_TABLE);
     }
@@ -64,7 +66,8 @@ public class DataBaseHandlerShloka extends SQLiteOpenHelper {
         values.put(KEY_SHLOKA_DETAIL,shlokas.getVerse_details());
         values.put(KEY_SHLOKA_TRANSLATION,shlokas.getVerse_translation());
         values.put(KEY_SHLOKA_PURPOSE,shlokas.getVerse_purpose());
-        values.put(KEY_SHLOKA_ACCESS_FLAG,shlokas.getAccess_flag());
+        values.put(KEY_SHLOKA_ACCESS_FLAG,shlokas.getAccessFlag());
+        values.put(KEY_SHLOKA_READ_FLAG,shlokas.getReadFlag());
         //inserting record
         db.insert(TABLE_SHLOKA,null,values);
         db.close();//closing database connection
@@ -72,17 +75,26 @@ public class DataBaseHandlerShloka extends SQLiteOpenHelper {
 
     //get a single shloka
     Shlokas getsholka(int id){
+        Shlokas shlokas;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.query(
                 TABLE_SHLOKA,
-                new String[]{KEY_SHLOKA_ID,KEY_SHLOKA_DETAIL,KEY_SHLOKA_TRANSLATION,KEY_SHLOKA_PURPOSE,KEY_CHAPTER_ID},
+                new String[]{KEY_SHLOKA_ID,KEY_SHLOKA_DETAIL,KEY_SHLOKA_TRANSLATION,KEY_SHLOKA_PURPOSE,KEY_CHAPTER_ID,KEY_SHLOKA_ACCESS_FLAG,KEY_SHLOKA_READ_FLAG},
                 KEY_SHLOKA_ID +"= ?",new String[]{String.valueOf(id)},null,null,null
         );
-
-        if (cursor != null)
-            cursor.moveToFirst();
-        Shlokas shlokas = new Shlokas(Integer.parseInt(cursor.getString(0)),cursor.getString(1),cursor.getString(2),cursor.getString(3));
+        if(cursor == null) {
+            return null;
+        }
+        cursor.moveToNext();
+        shlokas = new Shlokas(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3),Integer.parseInt(cursor.getString(4)),Integer.parseInt(cursor.getString(5)),Integer.parseInt(cursor.getString(6)));
         cursor.close();
+     /*   if (cursor != null && cursor.getCount() > 0) {
+           cursor.moveToFirst();
+                shlokas = new Shlokas(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3),Integer.parseInt(cursor.getString(4)));
+
+        }*/
+
+            db.close();
         return shlokas;
     }
     //get chapter id
@@ -100,7 +112,7 @@ public class DataBaseHandlerShloka extends SQLiteOpenHelper {
         return shlokas.getChapter_id();
     }
     //get Access Flag
-    boolean getAccessFlag(int id){
+    int getaccessFlag(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.query(TABLE_SHLOKA,
                 new String[]{KEY_SHLOKA_ID,KEY_CHAPTER_ID,KEY_SHLOKA_ACCESS_FLAG},
@@ -108,9 +120,25 @@ public class DataBaseHandlerShloka extends SQLiteOpenHelper {
                 );
         if (cursor != null)
             cursor.moveToFirst();
-        Shlokas shlokas = new Shlokas(Integer.parseInt(cursor.getString(0)),Integer.parseInt(cursor.getString(1)),Boolean.getBoolean(cursor.getString(2)));
+        //Shlokas shlokas = new Shlokas(Integer.parseInt(cursor.getString(0)),Integer.parseInt(cursor.getString(1)),Integer.parseInt(cursor.getString(5)));
+        Shlokas shlokas  = new Shlokas(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))),Integer.parseInt(cursor.getString(cursor.getColumnIndex("chapter_id"))),Integer.parseInt(cursor.getString(cursor.getColumnIndex("access_flag"))));
         cursor.close();
-        return shlokas.getAccess_flag();
+        return shlokas.getAccessFlag();
+    }
+
+    //get Read Flag
+    int getReadFlag(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(TABLE_SHLOKA,
+                new String[]{KEY_SHLOKA_ID,KEY_CHAPTER_ID,KEY_SHLOKA_ACCESS_FLAG,KEY_SHLOKA_READ_FLAG},
+                KEY_SHLOKA_ID +"=?",new String[]{String.valueOf(id)},null,null,null
+        );
+        if (cursor != null)
+            cursor.moveToFirst();
+        //Shlokas shlokas = new Shlokas(Integer.parseInt(cursor.getString(0)),Integer.parseInt(cursor.getString(1)),Integer.parseInt(cursor.getString(5)));
+        Shlokas shlokas  = new Shlokas(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))),Integer.parseInt(cursor.getString(cursor.getColumnIndex("chapter_id"))),Integer.parseInt(cursor.getString(cursor.getColumnIndex("access_flag"))),Integer.parseInt(cursor.getString(cursor.getColumnIndex("read_flag"))));
+        cursor.close();
+        return shlokas.getReadFlag();
     }
 
     //set access flag
@@ -119,8 +147,22 @@ public class DataBaseHandlerShloka extends SQLiteOpenHelper {
         ContentValues values =new ContentValues();
         values.put(KEY_SHLOKA_ID,shlokas.getId());
         values.put(KEY_CHAPTER_ID,shlokas.getChapter_id());
-        values.put(KEY_SHLOKA_ACCESS_FLAG,true);
+        values.put(KEY_SHLOKA_ACCESS_FLAG,shlokas.getAccessFlag());
+        //updating row
+  //      String mysql = "Update "+TABLE_SHLOKA+" set "+KEY_SHLOKA_ACCESS_FLAG+"='"+shlokas.getAccessFlag()+"'" +" where "+KEY_SHLOKA_ID+" = "+shlokas.getId()+" and "+KEY_CHAPTER_ID+" ="+shlokas.getChapter_id();
+//        db.execSQL(mysql);
 
+       //return db.update(TABLE_SHLOKA,values,KEY_SHLOKA_ID +"=?",new String[]{String.valueOf(shlokas.getId())});
+        //return db.update(TABLE_SHLOKA,values,KEY_SHLOKA_ID +"=?",new String[{String.valueOf(shlokas.getId()),String.valueOf(shlokas.getChapter_id())}]);
+        return db.update(TABLE_SHLOKA,values,"id =? ",new String[]{String.valueOf(shlokas.getId())});
+    }
+    public  int updateReadFlag(Shlokas shlokas){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values =new ContentValues();
+        values.put(KEY_SHLOKA_ID,shlokas.getId());
+        values.put(KEY_CHAPTER_ID,shlokas.getChapter_id());
+        values.put(KEY_SHLOKA_ACCESS_FLAG,shlokas.getAccessFlag());
+        values.put(KEY_SHLOKA_READ_FLAG,shlokas.getReadFlag());
         //updating row
         return db.update(TABLE_SHLOKA,values,KEY_SHLOKA_ID +"=?",new String[]{String.valueOf(shlokas.getId())});
     }
@@ -174,6 +216,8 @@ public class DataBaseHandlerShloka extends SQLiteOpenHelper {
                 shlokas.setVerse_translation(cursor.getString(2));
                 shlokas.setVerse_purpose(cursor.getString(3));
                 shlokas.setChapter_id(Integer.parseInt(cursor.getString(4)));
+                shlokas.setAccessFlag(Integer.parseInt(cursor.getString(5)));
+                shlokas.setReadFlag(Integer.parseInt(cursor.getString(6)));
                 //adding shlokas to list
                 shlokasList.add(shlokas);
             }while (cursor.moveToNext());

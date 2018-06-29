@@ -18,7 +18,7 @@ public class DiaryDatabaseHandler extends SQLiteOpenHelper {
     static final int DATABASE_VERSION = 1;
     static final String TABLE_DIARY = "diary";
     static final String DATABASE_NAME = "diary_manager";
-    static String KEY_CHAPTER_ID = "chapter";
+    static final String KEY_CHAPTER_ID = "chapter";
     static final String KEY_DIARY_DETAIL = "diary";
 
     public DiaryDatabaseHandler(Context context) {
@@ -73,6 +73,7 @@ public class DiaryDatabaseHandler extends SQLiteOpenHelper {
             cursor.moveToNext();
         diary = new Diary(Integer.parseInt(cursor.getString(0)),cursor.getString(1));
         cursor.close();
+        db.close();
         return diary;
     }
     public int UpdateContent(Diary diary){

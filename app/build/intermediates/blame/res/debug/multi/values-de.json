@@ -368,17 +368,17 @@
                     "startLine": 21,
                     "startColumn": 4,
                     "startOffset": 2049,
-                    "endColumn": 205,
-                    "endOffset": 2250
+                    "endColumn": 110,
+                    "endOffset": 2155
                 },
                 "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
+                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\12.0.1\\res\\values-de\\values.xml",
                     "position": {
-                        "startLine": 5,
-                        "startColumn": 4,
-                        "startOffset": 486,
-                        "endColumn": 209,
-                        "endOffset": 691
+                        "startLine": 4,
+                        "startColumn": 0,
+                        "startOffset": 245,
+                        "endColumn": 106,
+                        "endOffset": 351
                     }
                 }
             },
@@ -386,18 +386,18 @@
                 "to": {
                     "startLine": 22,
                     "startColumn": 4,
-                    "startOffset": 2255,
-                    "endColumn": 187,
-                    "endOffset": 2438
+                    "startOffset": 2160,
+                    "endColumn": 195,
+                    "endOffset": 2351
                 },
                 "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
+                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\12.0.1\\res\\values-de\\values.xml",
                     "position": {
-                        "startLine": 18,
-                        "startColumn": 4,
-                        "startOffset": 2704,
-                        "endColumn": 191,
-                        "endOffset": 2891
+                        "startLine": 5,
+                        "startColumn": 0,
+                        "startOffset": 352,
+                        "endColumn": 195,
+                        "endOffset": 547
                     }
                 }
             },
@@ -405,18 +405,18 @@
                 "to": {
                     "startLine": 23,
                     "startColumn": 4,
-                    "startOffset": 2443,
-                    "endColumn": 117,
-                    "endOffset": 2556
+                    "startOffset": 2356,
+                    "endColumn": 129,
+                    "endOffset": 2481
                 },
                 "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
+                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\12.0.1\\res\\values-de\\values.xml",
                     "position": {
-                        "startLine": 16,
-                        "startColumn": 4,
-                        "startOffset": 2381,
-                        "endColumn": 117,
-                        "endOffset": 2494
+                        "startLine": 6,
+                        "startColumn": 0,
+                        "startOffset": 548,
+                        "endColumn": 125,
+                        "endOffset": 673
                     }
                 }
             },
@@ -424,18 +424,18 @@
                 "to": {
                     "startLine": 24,
                     "startColumn": 4,
-                    "startOffset": 2561,
-                    "endColumn": 295,
-                    "endOffset": 2852
+                    "startOffset": 2486,
+                    "endColumn": 113,
+                    "endOffset": 2595
                 },
                 "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
+                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\12.0.1\\res\\values-de\\values.xml",
                     "position": {
-                        "startLine": 30,
-                        "startColumn": 4,
-                        "startOffset": 4710,
-                        "endColumn": 299,
-                        "endOffset": 5005
+                        "startLine": 7,
+                        "startColumn": 0,
+                        "startOffset": 674,
+                        "endColumn": 109,
+                        "endOffset": 783
                     }
                 }
             },
@@ -443,18 +443,18 @@
                 "to": {
                     "startLine": 25,
                     "startColumn": 4,
-                    "startOffset": 2857,
-                    "endColumn": 130,
-                    "endOffset": 2983
+                    "startOffset": 2600,
+                    "endColumn": 236,
+                    "endOffset": 2832
                 },
                 "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
+                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\12.0.1\\res\\values-de\\values.xml",
                     "position": {
-                        "startLine": 14,
-                        "startColumn": 4,
-                        "startOffset": 2117,
-                        "endColumn": 130,
-                        "endOffset": 2243
+                        "startLine": 8,
+                        "startColumn": 0,
+                        "startOffset": 784,
+                        "endColumn": 236,
+                        "endOffset": 1020
                     }
                 }
             },
@@ -462,18 +462,18 @@
                 "to": {
                     "startLine": 26,
                     "startColumn": 4,
-                    "startOffset": 2988,
-                    "endColumn": 195,
-                    "endOffset": 3179
+                    "startOffset": 2837,
+                    "endColumn": 132,
+                    "endOffset": 2965
                 },
                 "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
+                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\12.0.1\\res\\values-de\\values.xml",
                     "position": {
-                        "startLine": 13,
-                        "startColumn": 4,
-                        "startOffset": 1917,
-                        "endColumn": 199,
-                        "endOffset": 2112
+                        "startLine": 9,
+                        "startColumn": 0,
+                        "startOffset": 1021,
+                        "endColumn": 128,
+                        "endOffset": 1149
                     }
                 }
             },
@@ -481,18 +481,18 @@
                 "to": {
                     "startLine": 27,
                     "startColumn": 4,
-                    "startOffset": 3184,
-                    "endColumn": 128,
-                    "endOffset": 3308
+                    "startOffset": 2970,
+                    "endColumn": 150,
+                    "endOffset": 3116
                 },
                 "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
+                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\12.0.1\\res\\values-de\\values.xml",
                     "position": {
-                        "startLine": 12,
-                        "startColumn": 4,
-                        "startOffset": 1788,
-                        "endColumn": 128,
-                        "endOffset": 1912
+                        "startLine": 10,
+                        "startColumn": 0,
+                        "startOffset": 1150,
+                        "endColumn": 146,
+                        "endOffset": 1296
                     }
                 }
             },
@@ -500,18 +500,18 @@
                 "to": {
                     "startLine": 28,
                     "startColumn": 4,
-                    "startOffset": 3313,
-                    "endColumn": 171,
-                    "endOffset": 3480
+                    "startOffset": 3121,
+                    "endColumn": 147,
+                    "endOffset": 3264
                 },
                 "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
+                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\12.0.1\\res\\values-de\\values.xml",
                     "position": {
-                        "startLine": 7,
-                        "startColumn": 4,
-                        "startOffset": 857,
-                        "endColumn": 175,
-                        "endOffset": 1028
+                        "startLine": 11,
+                        "startColumn": 0,
+                        "startOffset": 1297,
+                        "endColumn": 143,
+                        "endOffset": 1440
                     }
                 }
             },
@@ -519,18 +519,18 @@
                 "to": {
                     "startLine": 29,
                     "startColumn": 4,
-                    "startOffset": 3485,
-                    "endColumn": 133,
-                    "endOffset": 3614
+                    "startOffset": 3269,
+                    "endColumn": 203,
+                    "endOffset": 3468
                 },
                 "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
+                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\12.0.1\\res\\values-de\\values.xml",
                     "position": {
-                        "startLine": 11,
-                        "startColumn": 4,
-                        "startOffset": 1654,
-                        "endColumn": 133,
-                        "endOffset": 1783
+                        "startLine": 4,
+                        "startColumn": 0,
+                        "startOffset": 247,
+                        "endColumn": 203,
+                        "endOffset": 450
                     }
                 }
             },
@@ -538,18 +538,18 @@
                 "to": {
                     "startLine": 30,
                     "startColumn": 4,
-                    "startOffset": 3619,
-                    "endColumn": 242,
-                    "endOffset": 3857
+                    "startOffset": 3473,
+                    "endColumn": 238,
+                    "endOffset": 3707
                 },
                 "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
+                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\12.0.1\\res\\values-de\\values.xml",
                     "position": {
-                        "startLine": 9,
-                        "startColumn": 4,
-                        "startOffset": 1164,
-                        "endColumn": 246,
-                        "endOffset": 1406
+                        "startLine": 12,
+                        "startColumn": 0,
+                        "startOffset": 1441,
+                        "endColumn": 238,
+                        "endOffset": 1679
                     }
                 }
             },
@@ -557,18 +557,18 @@
                 "to": {
                     "startLine": 31,
                     "startColumn": 4,
-                    "startOffset": 3862,
-                    "endColumn": 238,
-                    "endOffset": 4096
+                    "startOffset": 3712,
+                    "endColumn": 113,
+                    "endOffset": 3821
                 },
                 "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
+                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\12.0.1\\res\\values-de\\values.xml",
                     "position": {
-                        "startLine": 10,
-                        "startColumn": 4,
-                        "startOffset": 1411,
-                        "endColumn": 242,
-                        "endOffset": 1649
+                        "startLine": 13,
+                        "startColumn": 0,
+                        "startOffset": 1680,
+                        "endColumn": 109,
+                        "endOffset": 1789
                     }
                 }
             },
@@ -576,18 +576,18 @@
                 "to": {
                     "startLine": 32,
                     "startColumn": 4,
-                    "startOffset": 4101,
-                    "endColumn": 130,
-                    "endOffset": 4227
+                    "startOffset": 3826,
+                    "endColumn": 199,
+                    "endOffset": 4021
                 },
                 "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
+                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\12.0.1\\res\\values-de\\values.xml",
                     "position": {
-                        "startLine": 8,
-                        "startColumn": 4,
-                        "startOffset": 1033,
-                        "endColumn": 130,
-                        "endOffset": 1159
+                        "startLine": 14,
+                        "startColumn": 0,
+                        "startOffset": 1790,
+                        "endColumn": 199,
+                        "endOffset": 1989
                     }
                 }
             },
@@ -595,18 +595,18 @@
                 "to": {
                     "startLine": 33,
                     "startColumn": 4,
-                    "startOffset": 4232,
-                    "endColumn": 205,
-                    "endOffset": 4433
+                    "startOffset": 4026,
+                    "endColumn": 132,
+                    "endOffset": 4154
                 },
                 "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
+                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\12.0.1\\res\\values-de\\values.xml",
                     "position": {
-                        "startLine": 24,
-                        "startColumn": 4,
-                        "startOffset": 3712,
-                        "endColumn": 205,
-                        "endOffset": 3913
+                        "startLine": 15,
+                        "startColumn": 0,
+                        "startOffset": 1990,
+                        "endColumn": 128,
+                        "endOffset": 2118
                     }
                 }
             },
@@ -614,18 +614,18 @@
                 "to": {
                     "startLine": 34,
                     "startColumn": 4,
-                    "startOffset": 4438,
-                    "endColumn": 124,
-                    "endOffset": 4558
+                    "startOffset": 4159,
+                    "endColumn": 220,
+                    "endOffset": 4375
                 },
                 "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
+                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\12.0.1\\res\\values-de\\values.xml",
                     "position": {
-                        "startLine": 23,
-                        "startColumn": 4,
-                        "startOffset": 3587,
-                        "endColumn": 124,
-                        "endOffset": 3707
+                        "startLine": 16,
+                        "startColumn": 0,
+                        "startOffset": 2119,
+                        "endColumn": 220,
+                        "endOffset": 2339
                     }
                 }
             },
@@ -633,18 +633,18 @@
                 "to": {
                     "startLine": 35,
                     "startColumn": 4,
-                    "startOffset": 4563,
-                    "endColumn": 160,
-                    "endOffset": 4719
+                    "startOffset": 4380,
+                    "endColumn": 205,
+                    "endOffset": 4581
                 },
                 "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
+                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\12.0.1\\res\\values-de\\values.xml",
                     "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 696,
-                        "endColumn": 160,
-                        "endOffset": 852
+                        "startLine": 17,
+                        "startColumn": 0,
+                        "startOffset": 2340,
+                        "endColumn": 201,
+                        "endOffset": 2541
                     }
                 }
             },
@@ -652,18 +652,18 @@
                 "to": {
                     "startLine": 36,
                     "startColumn": 4,
-                    "startOffset": 4724,
-                    "endColumn": 204,
-                    "endOffset": 4924
+                    "startOffset": 4586,
+                    "endColumn": 100,
+                    "endOffset": 4682
                 },
                 "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
+                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\12.0.1\\res\\values-de\\values.xml",
                     "position": {
-                        "startLine": 22,
-                        "startColumn": 4,
-                        "startOffset": 3382,
-                        "endColumn": 204,
-                        "endOffset": 3582
+                        "startLine": 18,
+                        "startColumn": 0,
+                        "startOffset": 2542,
+                        "endColumn": 96,
+                        "endOffset": 2638
                     }
                 }
             },
@@ -671,18 +671,18 @@
                 "to": {
                     "startLine": 37,
                     "startColumn": 4,
-                    "startOffset": 4929,
-                    "endColumn": 120,
-                    "endOffset": 5045
+                    "startOffset": 4687,
+                    "endColumn": 92,
+                    "endOffset": 4775
                 },
                 "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
+                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\12.0.1\\res\\values-de\\values.xml",
                     "position": {
-                        "startLine": 21,
-                        "startColumn": 4,
-                        "startOffset": 3261,
-                        "endColumn": 120,
-                        "endOffset": 3377
+                        "startLine": 19,
+                        "startColumn": 0,
+                        "startOffset": 2639,
+                        "endColumn": 88,
+                        "endOffset": 2727
                     }
                 }
             },
@@ -690,18 +690,18 @@
                 "to": {
                     "startLine": 38,
                     "startColumn": 4,
-                    "startOffset": 5050,
-                    "endColumn": 166,
-                    "endOffset": 5212
+                    "startOffset": 4780,
+                    "endColumn": 108,
+                    "endOffset": 4884
                 },
                 "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
+                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\12.0.1\\res\\values-de\\values.xml",
                     "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 319,
-                        "endColumn": 166,
-                        "endOffset": 481
+                        "startLine": 20,
+                        "startColumn": 0,
+                        "startOffset": 2728,
+                        "endColumn": 104,
+                        "endOffset": 2832
                     }
                 }
             },
@@ -709,237 +709,9 @@
                 "to": {
                     "startLine": 39,
                     "startColumn": 4,
-                    "startOffset": 5217,
-                    "endColumn": 148,
-                    "endOffset": 5361
-                },
-                "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 170,
-                        "endColumn": 148,
-                        "endOffset": 314
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 40,
-                    "startColumn": 4,
-                    "startOffset": 5366,
-                    "endColumn": 188,
-                    "endOffset": 5550
-                },
-                "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
-                    "position": {
-                        "startLine": 32,
-                        "startColumn": 4,
-                        "startOffset": 5142,
-                        "endColumn": 188,
-                        "endOffset": 5326
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 41,
-                    "startColumn": 4,
-                    "startOffset": 5555,
-                    "endColumn": 131,
-                    "endOffset": 5682
-                },
-                "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
-                    "position": {
-                        "startLine": 31,
-                        "startColumn": 4,
-                        "startOffset": 5010,
-                        "endColumn": 131,
-                        "endOffset": 5137
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 42,
-                    "startColumn": 4,
-                    "startOffset": 5687,
-                    "endColumn": 144,
-                    "endOffset": 5827
-                },
-                "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
-                    "position": {
-                        "startLine": 25,
-                        "startColumn": 4,
-                        "startOffset": 3918,
-                        "endColumn": 144,
-                        "endOffset": 4058
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 43,
-                    "startColumn": 4,
-                    "startOffset": 5832,
-                    "endColumn": 307,
-                    "endOffset": 6135
-                },
-                "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
-                    "position": {
-                        "startLine": 27,
-                        "startColumn": 4,
-                        "startOffset": 4187,
-                        "endColumn": 311,
-                        "endOffset": 4494
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 44,
-                    "startColumn": 4,
-                    "startOffset": 6140,
-                    "endColumn": 123,
-                    "endOffset": 6259
-                },
-                "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
-                    "position": {
-                        "startLine": 26,
-                        "startColumn": 4,
-                        "startOffset": 4063,
-                        "endColumn": 123,
-                        "endOffset": 4182
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 45,
-                    "startColumn": 4,
-                    "startOffset": 6264,
-                    "endColumn": 113,
-                    "endOffset": 6373
-                },
-                "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
-                    "position": {
-                        "startLine": 28,
-                        "startColumn": 4,
-                        "startOffset": 4499,
-                        "endColumn": 113,
-                        "endOffset": 4608
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 46,
-                    "startColumn": 4,
-                    "startOffset": 6378,
-                    "endColumn": 200,
-                    "endOffset": 6574
-                },
-                "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
-                    "position": {
-                        "startLine": 17,
-                        "startColumn": 4,
-                        "startOffset": 2499,
-                        "endColumn": 204,
-                        "endOffset": 2699
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 47,
-                    "startColumn": 4,
-                    "startOffset": 6579,
-                    "endColumn": 132,
-                    "endOffset": 6707
-                },
-                "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
-                    "position": {
-                        "startLine": 15,
-                        "startColumn": 4,
-                        "startOffset": 2248,
-                        "endColumn": 132,
-                        "endOffset": 2376
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 48,
-                    "startColumn": 4,
-                    "startOffset": 6712,
-                    "endColumn": 220,
-                    "endOffset": 6928
-                },
-                "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
-                    "position": {
-                        "startLine": 20,
-                        "startColumn": 4,
-                        "startOffset": 3036,
-                        "endColumn": 224,
-                        "endOffset": 3256
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 49,
-                    "startColumn": 4,
-                    "startOffset": 6933,
-                    "endColumn": 139,
-                    "endOffset": 7068
-                },
-                "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
-                    "position": {
-                        "startLine": 19,
-                        "startColumn": 4,
-                        "startOffset": 2896,
-                        "endColumn": 139,
-                        "endOffset": 3031
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 50,
-                    "startColumn": 4,
-                    "startOffset": 7073,
-                    "endColumn": 96,
-                    "endOffset": 7165
-                },
-                "from": {
-                    "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.3.0\\res\\values-de\\common_strings.xml",
-                    "position": {
-                        "startLine": 29,
-                        "startColumn": 4,
-                        "startOffset": 4613,
-                        "endColumn": 96,
-                        "endOffset": 4705
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 51,
-                    "startColumn": 4,
-                    "startOffset": 7170,
+                    "startOffset": 4889,
                     "endColumn": 61,
-                    "endOffset": 7227
+                    "endOffset": 4946
                 },
                 "from": {
                     "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.0.0\\res\\values-de\\values.xml",
@@ -954,11 +726,11 @@
             },
             {
                 "to": {
-                    "startLine": 52,
+                    "startLine": 40,
                     "startColumn": 4,
-                    "startOffset": 7232,
+                    "startOffset": 4951,
                     "endColumn": 81,
-                    "endOffset": 7309
+                    "endOffset": 5028
                 },
                 "from": {
                     "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-de\\values-de.xml",
@@ -973,11 +745,11 @@
             },
             {
                 "to": {
-                    "startLine": 53,
+                    "startLine": 41,
                     "startColumn": 4,
-                    "startOffset": 7314,
+                    "startOffset": 5033,
                     "endColumn": 100,
-                    "endOffset": 7410
+                    "endOffset": 5129
                 },
                 "from": {
                     "file": "D:\\android\\Geeta\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-de\\values-de.xml",

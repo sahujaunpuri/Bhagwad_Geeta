@@ -157,6 +157,12 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewAdapter.MyViewHolder> 
             delete_params = (RelativeLayout.LayoutParams)delete.getLayoutParams();
             params = (RelativeLayout.LayoutParams)textInputLayout.getLayoutParams();
             openclose_params = (RelativeLayout.LayoutParams)open_close.getLayoutParams();
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
         }
     }
 }

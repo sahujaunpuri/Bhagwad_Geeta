@@ -18,7 +18,7 @@
         android:id="@+id/toobar_title"
         android:text="SignUp"
         android:textColor="@color/colorwhite"
-        android:textSize="22sp"
+        android:textSize="14sp"
         android:gravity="fill_horizontal|center" />
     </android.support.v7.widget.Toolbar>
     <ScrollView
@@ -87,13 +87,17 @@
 
                 tools:visibility="gone" />-->
 
-                   <!--  <com.google.android.google.common.SignInButton
+                     <com.google.android.gms.common.SignInButton
                          android:id="@+id/button2"
+                         android:text=""
                          android:layout_width="160dp"
                          android:layout_marginTop="30dp"
-                         android:layout_height="wrap_content"
-                         android:layout_gravity="center_horizontal" />
--->
+                         android:layout_height="30dp"
+
+                         android:layout_gravity="center_horizontal"
+                         />
+
+
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -178,6 +182,11 @@
                 android:layout_toRightOf="@+id/imageView8"
                 android:hint="Enter your mobile number"
                 android:layout_width="250dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtview"
+                android:visibility="invisible"/>
             <TextView
                 android:text="For OTP Verification"
                 android:layout_width="wrap_content"

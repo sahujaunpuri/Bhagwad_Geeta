@@ -10,6 +10,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.support.design.widget.TextInputEditText;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +26,7 @@ import java.text.SimpleDateFormat;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -37,7 +40,6 @@ TextView textView1,textView2;
     int count = 0;
     SQLiteDatabase db1;
     public static final String DEFAULT = "N/A";
-    public static final boolean DEFAULT1 = false;
     public static final boolean default_value = false;
 
     Bundle bundle;
@@ -53,7 +55,6 @@ TextView textView1,textView2;
         Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/Lato-Hairline.ttf");
         sharedPreferences = getSharedPreferences("app_data", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = sharedPreferences.edit();
-
         textView1.setTypeface(custom_font);
         PackageManager packageManager =  getApplicationContext().getPackageManager();
         long updateTimeInMilliseconds = 0; // install time is conveniently provided in milliseconds
@@ -89,6 +90,7 @@ TextView textView1,textView2;
                 }
             flag = true;
         }*/
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -131,4 +133,6 @@ TextView textView1,textView2;
         }, 3000);
 
     }
-  }
+
+
+}

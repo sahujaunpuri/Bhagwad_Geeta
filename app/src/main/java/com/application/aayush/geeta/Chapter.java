@@ -96,6 +96,8 @@ public class Chapter extends Fragment {
                 String data_to_be_saved = chapter_content.getText().toString();
                 //Toast.makeText(UserMenu.this,"Inside save of if first part of Front button",Toast.LENGTH_SHORT).show();
                 saveData(data_to_be_saved,chapter_no);
+                getActivity().onBackPressed();
+
 
             }
         });

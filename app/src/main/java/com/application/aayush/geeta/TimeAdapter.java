@@ -47,7 +47,6 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.ReminderViewHo
         layoutParams = new CardView.LayoutParams(RecyclerView.LayoutParams.WRAP_CONTENT, RecyclerView.LayoutParams.WRAP_CONTENT);
         cardView = (CardView)itemView.findViewById(R.id.card_view);
         layout = (RelativeLayout)itemView.findViewById(R.id.alarm_layout);
-
         repeat = (CheckBox)itemView.findViewById(R.id.checkBox3);
         sunday = (Button) itemView.findViewById(R.id.day1);
         vibrate = (CheckBox)itemView.findViewById(R.id.checkBox4);
