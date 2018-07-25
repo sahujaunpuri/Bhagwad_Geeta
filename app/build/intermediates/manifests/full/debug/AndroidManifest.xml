@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Required by older versions of Google Play services to create IID tokens -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
@@ -41,9 +42,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.application.aayush.geeta.ThirdScreen" />
         </activity>
-
-        <receiver android:name="com.application.aayush.geeta.AlarmReceiver" />
-
         <activity android:name="com.application.aayush.geeta.FirstScreen" />
         <activity android:name="com.application.aayush.geeta.SecondScreen" />
         <activity
@@ -94,7 +92,17 @@
             android:name="com.application.aayush.geeta.RingtonePlayService"
             android:enabled="true" />
 
-        <receiver android:name="com.application.aayush.geeta.AlarmReceiver" />
+        <receiver
+            android:name="com.application.aayush.geeta.AlarmReceiver"
+            android:enabled="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.application.aayush.geeta.AlertReceiver" />
 
         <service
             android:name="com.application.aayush.geeta.AlarmService"

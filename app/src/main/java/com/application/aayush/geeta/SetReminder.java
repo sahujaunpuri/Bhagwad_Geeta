@@ -96,11 +96,13 @@ public class SetReminder extends AppCompatActivity{
 //                        DynamicallyAddReminder dynamicallyAddReminder = new DynamicallyAddReminder();
                        addReminder.setArguments(bundle);
 //                        dynamicallyAddReminder.setArguments(bundle);
+/*
                         alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
                         Intent myIntent = new Intent(SetReminder.this, AlarmReceiver.class);
                         pendingIntent = PendingIntent.getBroadcast(SetReminder.this, 0, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
                         //sets the alarm manager
                         alarmManager.set(AlarmManager.RTC_WAKEUP,mcurrentTime.getTimeInMillis(),pendingIntent);
+*/
 
                         FragmentManager fragmentManager = getSupportFragmentManager();
 

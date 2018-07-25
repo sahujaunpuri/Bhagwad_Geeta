@@ -2,6 +2,7 @@ package com.application.aayush.geeta;
 
 
 import android.content.Intent;
+import android.database.SQLException;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -109,8 +110,13 @@ public class diaryFragment extends Fragment {
                 int ch = Integer.parseInt(chapter_no.getText().toString());
                 dataBaseHandlerShloka.addChapter(new Shlokas(ch,0));
                 boolean ret = diaryDatabaseHandler.deleteContent(ch);
-                contentsList.remove(position);
-                diaryAdapter.notifyItemRemoved(position);
+                try {
+                    contentsList.remove(position);
+                    diaryAdapter.notifyItemRemoved(position);
+                }
+                catch (SQLException e){
+                    e.printStackTrace();
+                }
 //                Toast.makeText(diaryFragment.this.getContext(),chapter_no1.getText().toString()+":"+chapter_content1.getText().toString(),Toast.LENGTH_SHORT).show();
             }
 

@@ -31,7 +31,7 @@ public class RingtonePlayService extends Service {
         mediaPlayer = MediaPlayer.create(this, Settings.System.DEFAULT_ALARM_ALERT_URI);
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         mediaPlayer.start();
-        return START_NOT_STICKY;
+        return START_STICKY;
     }
 
     @Override

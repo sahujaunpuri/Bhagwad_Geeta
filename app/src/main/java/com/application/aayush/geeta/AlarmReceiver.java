@@ -26,7 +26,7 @@ import static android.support.v4.content.WakefulBroadcastReceiver.startWakefulSe
 
 public class AlarmReceiver extends BroadcastReceiver {
     SharedPreferences sharedPreferences;
-
+    MediaPlayer mediaPlayer;
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.e("In Start Service","Alarm Receiver");
@@ -35,19 +35,21 @@ public class AlarmReceiver extends BroadcastReceiver {
             Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
             v.vibrate(10000);
         }
-        //alarmSound = sharedPreferences.getString("alarm_sound","null");
+        String alarmSound = sharedPreferences.getString("alarm_sound", "null");
 
-        //Uri mp3 = Uri.parse("android.resource://"+context.getPackageName()+"/raw/"+alarmSound);
+        Uri mp3 = Uri.parse("android.resource://"+context.getPackageName()+"/raw/"+alarmSound);
 
         //Uri alarmURI = RingtoneManager.getDefaultUri(R.raw.bgita);
-        /*mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+      /*  mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         try {
             mediaPlayer.setDataSource(context,mp3);
             mediaPlayer.prepare();
             mediaPlayer.start();
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
+*/
         Intent intent1 = new Intent(context,RingtonePlayService.class);
         context.startService(intent1);
        /* mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -62,6 +64,6 @@ public class AlarmReceiver extends BroadcastReceiver {
                 AlarmService.class.getName());
         startWakefulService(context, (intent1.setComponent(comp)));
         setResultCode(Activity.RESULT_OK);*/
-
+//        MediaPlayer mediaPlayer = MediaPlayer.create(AlarmReceiver.this.g, R.raw.bgita);
     }
 }

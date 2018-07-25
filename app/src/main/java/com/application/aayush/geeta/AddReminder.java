@@ -1,6 +1,5 @@
 package com.application.aayush.geeta;
 
-
 import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -26,18 +25,17 @@ import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.TimeZone;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AddReminder extends Fragment {
+public class AddReminder extends Fragment implements View.OnClickListener {
 
     int hour,minute,alarmTime;
     Toolbar toolbar;
@@ -55,7 +53,9 @@ public class AddReminder extends Fragment {
     public static final String default_value1 = "N/A";
     public static final String default_sound = "Default Ringtone";
     ImageButton back;
+    boolean isSundayClicked = false,isMondayClicked = false,isTuesdayClicked = false,isWednesdayClicked = false,isThursdayClicked = false,isFridayClicked = false,isSaturdayClicked = false; // You should add a boolean flag to record the button on/off state
     SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm");
+    HashMap<Button,Integer> sun,mon,tue,wed,thu,fri,sat;
     public AddReminder() {
         // Required empty public constructor
     }
@@ -118,6 +118,21 @@ public class AddReminder extends Fragment {
         final int m = currentLocalTime.getMinutes();
         changeRingtone.setText(sharedPreferences.getString("alarm_sound",default_sound));
         aSwitch.setChecked(true);
+        sun = new HashMap<>();
+        mon = new HashMap<>();
+        tue = new HashMap<>();
+        wed = new HashMap<>();
+        thu=  new HashMap<>();
+        fri = new HashMap<>();
+        sat = new HashMap<>();
+        sun.put(sunday,R.drawable.button_selected);
+        mon.put(monday,R.drawable.button_selected);
+        tue.put(tuesday,R.drawable.button_selected);
+        wed.put(wednesday,R.drawable.button_selected);
+        thu.put(thursday,R.drawable.button_selected);
+        fri.put(friday,R.drawable.button_selected);
+        sat.put(saturday,R.drawable.button_selected);
+
         changeRingtone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,14 +158,6 @@ public class AddReminder extends Fragment {
                     textInputLayout.setLayoutParams(params);
                     delete.setLayoutParams(delete_params);
                     open_close.setLayoutParams(openclose_params);
-                    sunday.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_selected));
-                    monday.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_selected));
-                    tuesday.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_selected));
-                    wednesday.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_selected));
-                    thursday.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_selected));
-                    friday.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_selected));
-                    saturday.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_selected));
-
 
                 }
                 else {
@@ -173,6 +180,22 @@ public class AddReminder extends Fragment {
                 }
             }
         });
+/*
+        sunday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isButtonClicked = !isButtonClicked;
+                v.setBackgroundResource(isButtonClicked ? R.drawable.button_normal:R.drawable.button_selected);
+            }
+        });*/
+        sunday.setOnClickListener(this);
+        monday.setOnClickListener(this);
+        tuesday.setOnClickListener(this);
+        wednesday.setOnClickListener(this);
+        thursday.setOnClickListener(this);
+        friday.setOnClickListener(this);
+        saturday.setOnClickListener(this);
+
         vibrate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -240,15 +263,22 @@ public class AddReminder extends Fragment {
                 if(isChecked){
                     int hr = 0,min = 0 ;
                     Calendar calendar = Calendar.getInstance();
-                    calendar.set(Calendar.HOUR_OF_DAY, hr);
-                    calendar.set(Calendar.MINUTE, min);
-
-                    if(calendar.before(Calendar.getInstance())) {
+                    calendar.setTimeInMillis(System.currentTimeMillis());
+                    calendar.set(Calendar.HOUR_OF_DAY, hour);
+                    calendar.set(Calendar.MINUTE, minute);
+                    if(Calendar.getInstance().after(calendar)){
+                        // Move to tomorrow
                         calendar.add(Calendar.DATE, 1);
                     }
+                  /*  if(calendar.before(Calendar.getInstance())) {
+                        calendar.add(Calendar.DATE, 1);
+                    }*/
+                    /*Toast.makeText(getContext(),"Current hour ="+h+":Minute = "+m,  Toast.LENGTH_SHORT).show();
+                    //x = hour - hr ;
+                    //y = minute - min ;
                     hour = hour - h;
                     minute = minute - m;
-
+*/
 
                     if(hour>1&&minute>1){
                      text1 =" Alarm set for "+hour+"hours and "+minute+"minutes from now on";
@@ -262,16 +292,23 @@ public class AddReminder extends Fragment {
                     else if (hour>1 && minute <1){
                         text1 =" Alarm set for "+hour+"hours and "+minute+"minutes from now on";
                     }
+                    //startAlarm(hour,minute);
                     addNotification();
-                    Toast.makeText(AddReminder.this.getContext(),text1,Toast.LENGTH_SHORT).show();
+//
+                  if(!(isSundayClicked&&isMondayClicked&&isTuesdayClicked&&isWednesdayClicked&&isThursdayClicked&&isFridayClicked&&isSaturdayClicked))
+                  {
+                      Toast.makeText(AddReminder.this.getContext(),"All selected",Toast.LENGTH_SHORT).show();
+                  }
                     alarmTime = hour*3600+minute*60;
-                    long x = calendar.getTimeInMillis() + (long)(alarmTime*1000);
+                    long xy = calendar.getTimeInMillis() + (long)(alarmTime*1000);
                     Intent intent = new Intent(getActivity(),AlarmReceiver.class);
                     PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
                     AlarmManager alarmManager = (AlarmManager)getActivity().getSystemService(Context.ALARM_SERVICE);
                     //alarmManager.set(AlarmManager.RTC_WAKEUP,x,pendingIntent);
-                    alarmManager.setExact(AlarmManager.RTC_WAKEUP,x,pendingIntent);
-                    Toast.makeText(AddReminder.this.getContext(), String.valueOf(System.currentTimeMillis()+alarmTime*1000), Toast.LENGTH_SHORT).show();
+                    //alarmManager.setExact(AlarmManager.RTC_WAKEUP,xy,pendingIntent);
+                    //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),7*24*60*60*1000, pendingIntent);
+                    alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY, pendingIntent);
+
 
                 }
             }
@@ -281,6 +318,7 @@ public class AddReminder extends Fragment {
 //        recyclerView.setAdapter(ca);
         return view;
     }
+
 
     private void addNotification() {
         NotificationCompat.Builder builder =
@@ -298,6 +336,50 @@ public class AddReminder extends Fragment {
         NotificationManager manager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(0, builder.build());
     }
+
+
+
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()){
+            case R.id.day1:            isSundayClicked = !isSundayClicked;
+                v.setBackgroundResource(isSundayClicked ? R.drawable.button_normal:R.drawable.button_selected);
+                Toast.makeText(AddReminder.this.getContext(),String.valueOf(isSundayClicked), Toast.LENGTH_SHORT).show();
+
+                break;
+            case R.id.day2:isMondayClicked = !isMondayClicked;
+                v.setBackgroundResource(isMondayClicked ? R.drawable.button_normal:R.drawable.button_selected);
+
+                break;
+            case R.id.day3:isTuesdayClicked = !isTuesdayClicked;
+                v.setBackgroundResource(isTuesdayClicked ? R.drawable.button_normal:R.drawable.button_selected);
+
+                break;
+            case R.id.day4:isWednesdayClicked = !isWednesdayClicked;
+                v.setBackgroundResource(isWednesdayClicked ? R.drawable.button_normal:R.drawable.button_selected);
+
+                break;
+            case R.id.day5:isThursdayClicked = !isThursdayClicked;
+                v.setBackgroundResource(isThursdayClicked ? R.drawable.button_normal:R.drawable.button_selected);
+
+                break;
+            case R.id.day6:isFridayClicked = !isFridayClicked;
+                v.setBackgroundResource(isFridayClicked ? R.drawable.button_normal:R.drawable.button_selected);
+
+                break;
+            case R.id.day7:isSaturdayClicked = !isSaturdayClicked;
+                v.setBackgroundResource(isSaturdayClicked ? R.drawable.button_normal:R.drawable.button_selected);
+
+                break;
+            default:break;
+
+        }
+    }
+
+
+
 /*
     private List<ReminderDetails> createList(int size) {
         String min = " ";

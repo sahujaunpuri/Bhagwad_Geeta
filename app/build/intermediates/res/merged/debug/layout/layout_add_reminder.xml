@@ -84,7 +84,7 @@
                 android:layout_height="30dp"
                 android:text="S"
                 android:textColor="@color/textcolor"
-                android:background="@drawable/button_normal"
+                android:background="@drawable/button_selected"
                 android:layout_below="@+id/textView47"
                 android:padding="1dp"
                 android:layout_marginTop="64dp"
@@ -98,7 +98,7 @@
                 android:layout_height="30dp"
                 android:text="M"
                 android:textColor="@color/textcolor"
-                android:background="@drawable/button_normal"
+                android:background="@drawable/button_selected"
                 android:layout_marginEnd="14dp"
                 android:layout_alignTop="@+id/day1"
                 android:layout_toEndOf="@+id/day1"
@@ -110,7 +110,7 @@
                 android:text="T"
                 android:layout_marginEnd="14dp"
                 android:textColor="@color/textcolor"
-                android:background="@drawable/button_normal"
+                android:background="@drawable/button_selected"
                 android:layout_alignTop="@+id/day1"
                 android:layout_toEndOf="@+id/day2"
                 android:visibility="gone" />
@@ -121,7 +121,7 @@
                 android:text="W"
                 android:textColor="@color/textcolor"
                 android:layout_marginEnd="14dp"
-                android:background="@drawable/button_normal"
+                android:background="@drawable/button_selected"
                 android:layout_alignTop="@+id/day1"
                 android:layout_toEndOf="@+id/day3"
                 android:visibility="gone" />
@@ -132,7 +132,7 @@
                 android:text="T"
                 android:textColor="@color/textcolor"
                 android:layout_marginEnd="14dp"
-                android:background="@drawable/button_normal"
+                android:background="@drawable/button_selected"
                 android:layout_alignTop="@+id/day1"
                 android:layout_toEndOf="@+id/day4"
                 android:visibility="gone" />
@@ -143,7 +143,7 @@
                 android:text="F"
                 android:textColor="@color/textcolor"
                 android:layout_marginEnd="14dp"
-                android:background="@drawable/button_normal"
+                android:background="@drawable/button_selected"
                 android:layout_alignTop="@+id/day1"
                 android:layout_toEndOf="@+id/day5"
                 android:visibility="gone" />
@@ -153,7 +153,7 @@
                 android:layout_height="30dp"
                 android:text="S"
                 android:textColor="@color/textcolor"
-                android:background="@drawable/button_normal"
+                android:background="@drawable/button_selected"
                 android:layout_alignTop="@+id/day1"
                 android:layout_toEndOf="@+id/day6"
                 android:visibility="gone" />

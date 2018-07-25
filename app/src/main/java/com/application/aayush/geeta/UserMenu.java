@@ -885,7 +885,7 @@ public class UserMenu extends AppCompatActivity
                         Intent intent = new Intent(UserMenu.this,UserNote.class);
                         intent.putExtra("chapter_number",chapter.getText().toString());
                         startActivity(intent);
-                        editText.setMaxLines(10);
+                        //editText.setMaxLines(10);
                     }
                 });
                 setValues(chapter_no,verse,translation,purport);
